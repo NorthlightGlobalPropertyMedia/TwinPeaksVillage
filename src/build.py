@@ -350,5 +350,6 @@ write("legal.html",page("legal.html","Legal and disclosures","Disclosures for Tw
 shutil.copy(os.path.join(ROOT,"src/site.css"),os.path.join(DIST,"assets/site.css"))
 shutil.copy(os.path.join(ROOT,"src/site.js"),os.path.join(DIST,"assets/site.js"))
 open(os.path.join(DIST,"robots.txt"),"w").write("User-agent: *\nDisallow: /\n")
-open(os.path.join(DIST,"netlify.toml"),"w").write('[build]\n  publish = "."\n\n[[headers]]\n  for = "/*"\n  [headers.values]\n    X-Robots-Tag = "noindex, nofollow"\n    X-Content-Type-Options = "nosniff"\n    Referrer-Policy = "strict-origin-when-cross-origin"\n\n[[headers]]\n  for = "/assets/*"\n  [headers.values]\n    Cache-Control = "public, max-age=604800"\n')
+open(os.path.join(DIST,"_headers"),"w").write("/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/assets/*\n  Cache-Control: public, max-age=604800\n")
+open(os.path.join(ROOT,"netlify.toml"),"w").write('[build]\n  publish = "dist"\n  command = ""\n')
 print("built")
