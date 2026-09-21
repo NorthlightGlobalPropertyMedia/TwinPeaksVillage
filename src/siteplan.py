@@ -43,23 +43,26 @@ LOTS = [
   [(256,1025),(1040,1132),(1026,1515),(892,1580),(960,1720),(183,1615)]),
 ]
 
+STREET = {8: "Geodessy Way", 9: "Geodessy Way"}   # per Keegan Rice; every other Phase One lot fronts Solar Spring Circle
+def street(n): return STREET.get(n, "Solar Spring Circle")
+
 def pts(p): return " ".join(f"{x:g},{y:g}" for x, y in p)
 
 def overlay(pre=""):
     g = []
     for (n,kind,title,addr,sf,sk,st,price,link,chip,(px,py),poly) in LOTS:
         ac = sf / 43560
-        label = f"Lot {n}. {title}. {addr}. {st}. {price}. {sf:,} square feet, about {ac:.2f} acres."
+        label = f"Lot {n}. {title}. {addr if kind!='lot' else street(n)}. {st}. {price}. {sf:,} square feet, about {ac:.2f} acres."
         xs = [x for x,_ in poly]; ys = [y for _,y in poly]
         cw = 30 + len(chip) * 21
-        g.append(f'<g class="lot s-{sk}" tabindex="0" role="button" aria-label="{e(label)}" data-n="{n}" data-title="{e(title)}" data-addr="{e(addr)}" data-status="{e(st)}" data-sk="{sk}" data-price="{e(price)}" data-sf="{sf:,}" data-ac="{ac:.2f}" data-link="{pre}{link}" data-kind="{kind}" data-box="{min(xs):g} {min(ys):g} {max(xs):g} {max(ys):g}">'
+        g.append(f'<g class="lot s-{sk}" tabindex="0" role="button" aria-label="{e(label)}" data-n="{n}" data-title="{e(title)}" data-addr="{e(addr)}" data-street="{e(street(n))}" data-status="{e(st)}" data-sk="{sk}" data-price="{e(price)}" data-sf="{sf:,}" data-ac="{ac:.2f}" data-link="{pre}{link}" data-kind="{kind}" data-box="{min(xs):g} {min(ys):g} {max(xs):g} {max(ys):g}">'
                  f'<polygon class="shape" points="{pts(poly)}"/>'
                  f'<g class="mark" transform="translate({px},{py})"><g class="mk"><circle class="pin" r="46"/><text class="num" y="16" text-anchor="middle">{n}</text>'
                  f'<g class="chip" transform="translate(0,66)"><rect x="{-cw/2:g}" y="0" width="{cw:g}" height="58" rx="29"/><text y="40" text-anchor="middle">{e(chip)}</text></g></g></g></g>')
     return f'<svg class="sp-over" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Phase One lots. Select a lot for details.">{"".join(g)}</svg>'
 
 def block(pre=""):
-    rows = "".join(f'<tr><th scope="row">Lot {n}</th><td>{e(addr) if kind!="lot" else "Single-family homesite"}</td><td>{e(st)}</td><td class="num">{sf:,} sq ft</td><td class="num">{e(price)}</td></tr>'
+    rows = "".join(f'<tr><th scope="row">Lot {n}</th><td>{e(addr) if kind!="lot" else "Single-family homesite, "+street(n)}</td><td>{e(st)}</td><td class="num">{sf:,} sq ft</td><td class="num">{e(price)}</td></tr>'
                    for (n,kind,title,addr,sf,sk,st,price,link,chip,pin,poly) in LOTS)
     return f'''<div class="sp" id="sp" data-w="{W}" data-h="{H}">
 <div class="sp-view" id="sp-view"><div class="sp-stage" id="sp-stage">

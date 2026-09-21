@@ -130,7 +130,7 @@ village_body=f'''
  ("Phase Two","19 lots "+tbd("mix of single-family and duplex"),"Keegan Rice"),
  ("Phase One lot sizes","43,605 to 58,310 sq ft","Horizons Engineering site plan, sheet 1"),
  ("Single-family homesites","$115,000 per lot. Lots 2, 3, 4, 8 and 9 are available","Listing agreement; Keegan Rice"),
- ("Roads","Private. Maintained by the homeowners' association","Site plan general note 2; Keegan Rice"),
+ ("Roads","Solar Spring Circle and Geodessy Way, both private. Maintained by the homeowners' association","Site plan and its general note 2; Keegan Rice"),
  ("Stormwater","Maintained by the homeowners' association","Keegan Rice"),
  ("Water","Public water","MLS sheets; site plan"),
  ("Wastewater","Private septic on each lot, State-approved designs","NHDES approvals on file"),

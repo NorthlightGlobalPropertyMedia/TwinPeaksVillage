@@ -68,7 +68,7 @@
       lots.forEach(function(x){x.classList.remove('on')});g.classList.add('on');
       var d=g.dataset;
       $('sp-k').textContent='Lot '+d.n+(d.kind==='duplex'?' · Duplex':d.kind==='model'?' · Model home':' · Homesite');
-      $('sp-t').textContent=d.title;$('sp-a').textContent=d.kind==='lot'?'Solar Spring Circle, Carroll NH 03595':d.addr+', Carroll NH 03595';
+      $('sp-t').textContent=d.title;$('sp-a').textContent=d.kind==='lot'?d.street+', Carroll NH 03595':d.addr+', Carroll NH 03595';
       $('sp-s').textContent=d.status;$('sp-p').textContent=d.price;$('sp-z').textContent=d.sf+' sq ft · about '+d.ac+' ac';
       $('sp-d').hidden=false;var l=$('sp-l');l.hidden=false;l.href=d.link;l.textContent=d.kind==='lot'?'Ask about this homesite':'View details';
     }
