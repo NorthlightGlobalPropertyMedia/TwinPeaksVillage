@@ -74,7 +74,7 @@ def card(href,img,status,addr,name,meta,price,gold=False,empty=False):
 CARDS="".join([
  card("residences/281-solar-spring-circle.html","assets/img/281/LSD01734twilight_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage","$950,000"),
  card("residences/37-solar-spring-circle.html","assets/img/37/LSD01943twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind","$950,000"),
- card("residences/295-solar-spring-circle.html","","Coming soon","295 Solar Spring Circle","The third duplex","Details, photography and floor plans to follow","Pricing to be announced",empty=True),
+ card("residences/295-solar-spring-circle.html","assets/img/site/DJI_0636_900.jpg","Coming soon","295 Solar Spring Circle","The third duplex","Details, photography and floor plans to follow","Pricing to be announced"),
  card("hunter.html","assets/img/model/hunter-rendering_900.jpg","Model home under construction","1 Solar Spring Circle","The Hunter","Single-level &middot; 3 bedrooms, 2 baths, two-car garage &middot; artist's rendering","Pricing to be announced",gold=True),
 ])
 
@@ -259,7 +259,7 @@ write("residences/295-solar-spring-circle.html",page("residences/295-solar-sprin
 <p class="lede">The third completed duplex stands between 281 and 37 Solar Spring Circle. It shares the dormered design of 281.</p>
 {tbdblock("Photography, floor plans, film and specifications to come","Needs a shoot date and the same scan package as the other two buildings. Pricing and release timing to be confirmed.")}
 <div style="height:28px"></div>{spec([("Septic","8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2023090625 dated September 6, 2023","Horizons Engineering septic plan, Lot 6"),("Lot","43,942 sq ft","Horizons Engineering site plan"),("Bedrooms, baths, square footage",tbd("from scan and assessor"),""),("Price",tbd("public price and release date"),"")])}</div></section>
-<section class="band-paper tight"><div class="wrap">{gallery([g for g in GSITE if g[0] in ("DJI_0647","DJI_0618")],"site",[],"../")}</div></section>{cta("../")}''',pre="../"))
+<section class="band-paper tight"><div class="wrap">{gallery([g for g in GSITE if g[0] in ("DJI_0647","DJI_0618")],"site",[],"../")}</div></section>{cta("../")}''',hero("assets/img/site/DJI_0636_2000.jpg","295 Solar Spring Circle &middot; Coming soon","The third duplex","Between 281 and 37 Solar Spring Circle, with the mountains on the horizon.",credit="Rear aerial of 295 Solar Spring Circle, with 281 beyond",short=True,pre="../"),pre="../"))
 
 # ---------------- HUNTER
 HUNTER_SPEC=spec([("Plan","Westchester Modular Homes “Hunter,” 60 by 27 ft, single level","Westchester plan set, serial 26129"),

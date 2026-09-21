@@ -112,7 +112,7 @@ GSITE = [
  ("DJI_0625","Phase One and Route 3","site",""),
  ("DJI_0626","37 Solar Spring Circle with the Presidential Range beyond","site",""),
  ("DJI_0627","37 Solar Spring Circle","site",""),
- ("DJI_0636","Rear of 37 Solar Spring Circle, range on the horizon","site",""),
+ ("DJI_0636","Rear of 295 Solar Spring Circle with 281 beyond, mountains on the horizon","site",""),
  ("DJI_0647","281 and 295 Solar Spring Circle","site",""),
  ("DJI_0646","281 Solar Spring Circle aerial","site",""),
 ]
