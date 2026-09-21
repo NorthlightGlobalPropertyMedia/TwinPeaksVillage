@@ -31,4 +31,25 @@
     g.addEventListener('click',function(e){var b=e.target.closest('button');if(b)open(g,b);});
   });
   document.addEventListener('keydown',function(e){if(!lb)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);});
+
+  // site plan
+  var lots=document.querySelectorAll('.siteplan .lot');
+  if(lots.length){
+    var $=function(i){return document.getElementById(i)};
+    function pick(g,sticky){
+      lots.forEach(function(x){x.classList.remove('on')});g.classList.add('on');
+      var d=g.dataset;
+      $('sp-k').textContent='Lot '+d.n+(d.kind==='duplex'?' \u00b7 Duplex':d.kind==='model'?' \u00b7 Model home':' \u00b7 Homesite');
+      $('sp-t').textContent=d.title;$('sp-a').textContent=d.kind==='lot'?'Solar Spring Circle, Carroll NH 03595':d.addr+', Carroll NH 03595';
+      $('sp-s').textContent=d.status;$('sp-p').textContent=d.price;$('sp-z').textContent=d.sf+' sq ft \u00b7 about '+d.ac+' ac';
+      $('sp-d').hidden=false;var l=$('sp-l');l.hidden=false;l.href=d.link;l.textContent=d.kind==='lot'?'Ask about this homesite':'View details';
+    }
+    var locked=false;
+    lots.forEach(function(g){
+      g.addEventListener('mouseenter',function(){if(!locked)pick(g)});
+      g.addEventListener('focus',function(){pick(g)});
+      g.addEventListener('click',function(){locked=true;pick(g)});
+      g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();locked=true;pick(g);$('sp-l').focus();}});
+    });
+  }
 })();

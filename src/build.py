@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Twin Peaks Village static site builder. Run: python3 src/build.py  -> writes dist/*.html
-Content facts trace to documents in /documents or to Keegan Rice's written confirmations of Sept 18-19, 2026.
+Content facts trace to documents in /documents or to Keegan Rice's written confirmations.
 Anything wrapped in tbd() is a visible placeholder."""
 import os, html, shutil
 from data import G281, G37, GSITE
+import siteplan
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); DIST=os.path.join(ROOT,"dist")
 e=html.escape
 def tbd(t): return f'<span class="tbd">To confirm: {e(t)}</span>'
@@ -31,8 +32,8 @@ def page(fn,title,desc,body,hero=None,pre=""):
 <footer><div class="wrap"><div class="cols">
 <div><img class="logo" src="{pre}assets/brand/01_primary_reversed.svg" alt="Twin Peaks Village" width="190" height="108"><p>A new community of single-family homes and duplex residences on Solar Spring Circle in Twin Mountain, a village of Carroll, New Hampshire.</p></div>
 <div><h5>Explore</h5>{"".join(f'<a href="{pre}{h}">{t}</a>' for h,t in NAV)}<a href="{pre}contact.html">Inquire</a><a href="{pre}legal.html">Legal and disclosures</a></div>
-<div><h5>Listing agents</h5><a href="tel:+16033487261">Keegan Rice &middot; 603-348-7261</a><a href="mailto:KeeganR@BadgerPeabodySmith.com">KeeganR@BadgerPeabodySmith.com</a><a href="tel:+16037145148" style="margin-top:12px">Matthew Penner &middot; 603-714-5148</a><a href="mailto:MatthewP@BadgerPeabodySmith.com">MatthewP@BadgerPeabodySmith.com</a></div>
-<div><h5>Exclusively listed by</h5><img class="bps" src="{pre}assets/brand/bps_logo_rev.png" alt="Badger Peabody &amp; Smith Realty" width="96" height="107"><p style="margin-top:12px">Badger Peabody &amp; Smith Realty<br>Bretton Woods office &middot; 603-259-0210</p></div>
+<div><h5>Listing agents</h5><a href="tel:+16033487261">Keegan Rice &middot; 603-348-7261</a><a href="mailto:KeeganR@BadgerPeabodySmith.com">KeeganR@BadgerPeabodySmith.com</a><a href="tel:+16037145148" style="margin-top:12px">Matthew Penner, Associate Broker &middot; 603-714-5148</a><a href="mailto:MatthewP@BadgerPeabodySmith.com">MatthewP@BadgerPeabodySmith.com</a></div>
+<div><h5>Exclusively listed by</h5><a href="https://www.badgerpeabodysmith.com/" target="_blank" rel="noopener" style="display:inline-block"><img class="bps" src="{pre}assets/brand/bps_logo_rev.png" alt="Badger Peabody &amp; Smith Realty, opens BadgerPeabodySmith.com" width="96" height="107"></a><p style="margin-top:12px"><a href="https://www.badgerpeabodysmith.com/" target="_blank" rel="noopener" style="display:inline">BadgerPeabodySmith.com</a><br>Bretton Woods office &middot; 603-259-0210</p></div>
 </div>
 <div class="fine">
 <p><strong>Draft language for counsel review.</strong> Information on this site is drawn from the documents and sources named on each page and is believed accurate but is not guaranteed. Prices, plans, specifications, dimensions and availability may change without notice. Square footage and room dimensions are approximate. Images marked "virtually staged" show digital furnishings; images marked "twilight" have a digitally enhanced sky; the image of The Hunter is an artist's rendering, and its landscaping, driveway and background are illustrative. References to resorts, trails and public lands are geographic only and imply no affiliation. Buyers should verify all information, including town and association rules, independently.</p>
@@ -63,7 +64,7 @@ def cta(pre=""):
     return f'''<section class="band-forest"><div class="wrap split">
 <div><p class="kicker">Visit</p><h2>See it in person</h2><div class="hair"></div><p class="lede">Showings are by appointment with the listing agents. Tell us which residence or homesite interests you and we will arrange a time.</p><div class="btns"><a class="btn fill" href="{pre}contact.html">Request a showing</a><a class="btn" href="{pre}documents.html">Offering documents</a></div></div>
 <div class="people"><div class="person"><b>Keegan Rice</b><span>REALTOR&reg;, NH Lic. #072031</span><a href="tel:+16033487261">603-348-7261</a><a href="mailto:KeeganR@BadgerPeabodySmith.com">KeeganR@BadgerPeabodySmith.com</a></div>
-<div class="person"><b>Matthew Penner</b><span>Badger Peabody &amp; Smith Realty</span><a href="tel:+16037145148">603-714-5148</a><a href="mailto:MatthewP@BadgerPeabodySmith.com">MatthewP@BadgerPeabodySmith.com</a></div></div>
+<div class="person"><b>Matthew Penner</b><span>Associate Broker, NH Lic. #067058</span><a href="tel:+16037145148">603-714-5148</a><a href="mailto:MatthewP@BadgerPeabodySmith.com">MatthewP@BadgerPeabodySmith.com</a></div></div>
 </div></section>'''
 
 def card(href,img,status,addr,name,meta,price,gold=False,empty=False):
@@ -86,10 +87,10 @@ home_body=f'''
 <div><p class="kicker">Welcome</p><h2>Twenty-seven homesites at the center of the White Mountains</h2><div class="hair"></div>
 <p class="lede">Twin Peaks Village is a new planned community on Solar Spring Circle, just off Route 3 in Twin Mountain. Single-family homes and duplex residences sit on level lots of about an acre, served by public water and underground utilities, with private roads cared for by a homeowners' association.</p>
 <p>The first three duplex buildings are complete and have never been occupied. The model home, The Hunter, was set on its foundation on September 16, 2026 and will be finished this fall.</p>
-<div class="btns"><a class="btn dark" href="village.html">About the village</a></div></div>
+<div class="btns"><a class="btn dark" href="village.html">About the village</a><a class="btn dark" href="village.html#site-plan">Interactive site plan</a></div></div>
 <div><img src="assets/img/site/DJI_0619_2000.jpg" alt="Aerial view of Twin Peaks Village from above Route 3 with mountains beyond" loading="lazy"></div>
 </div>
-<div class="wrap"><div class="facts"><div><b>27</b><span>Homesites planned</span></div><div><b>8</b><span>In Phase One</span></div><div><b>3</b><span>Duplex buildings</span></div><div><b>5</b><span>Single-family sites, Phase One</span></div><div><b>1+ acre</b><span>Phase One lot sizes</span></div></div></div>
+<div class="wrap"><div class="facts"><div><b>27</b><span>Homesites planned</span></div><div><b>$115,000</b><span>Single-family homesites</span></div><div><b>3</b><span>Duplex buildings</span></div><div><b>5</b><span>Single-family sites, Phase One</span></div><div><b>1+ acre</b><span>Phase One lot sizes</span></div></div></div>
 </section>
 <section class="band-paper"><div class="wrap"><p class="kicker">Residences</p><h2>Available now, and what comes next</h2><div class="hair"></div><div class="cards">{CARDS}</div></div></section>
 <section class="band-forest"><div class="wrap split top">
@@ -106,7 +107,7 @@ home_body=f'''
 <div><b>Complete</b>Three duplex buildings finished, with gravel roads and utilities in place to serve them.</div>
 <div><b>September 16, 2026</b>The Hunter model home set on its foundation at 1 Solar Spring Circle.</div>
 <div><b>September 2026</b>Subdivision plan approved by the New Hampshire Attorney General's office. {tbd("approval date and registration wording from counsel")}</div>
-<div class="open"><b>Fall 2026</b>Paving of the road, driveways and walkways, and final landscaping. {tbd("paving date")}</div>
+<div class="open"><b>Fall 2026</b>Paving of the road, driveways and walkways by the seller, and final landscaping.</div>
 <div class="open"><b>Fall 2026</b>Model home construction and final fit-up.</div>
 <div class="open"><b>In process</b>Association declaration, bylaws and budget. {tbd("delivery date from Attorney Sullivan")}</div>
 </div></div>
@@ -115,28 +116,28 @@ home_body=f'''
 {cta()}'''
 write("index.html",page("index.html","A new village in the White Mountains","Twin Peaks Village: single-family homes and duplex residences in Twin Mountain, New Hampshire.",home_body,
  hero("assets/img/37/DJI_0626twilight_2000.jpg","Twin Mountain &middot; New Hampshire","A new village in the White Mountains","Single-family homes and duplex residences on acre lots, minutes from the slopes, the trails and the river. Two new duplex residences are available now.",
- credit="37 Solar Spring Circle. Twilight sky digitally enhanced.",btns='<div class="btns"><a class="btn fill" href="residences.html">View residences</a><a class="btn" href="contact.html">Request a showing</a></div>')))
+ credit="37 Solar Spring Circle",btns='<div class="btns"><a class="btn fill" href="residences.html">View residences</a><a class="btn" href="contact.html">Request a showing</a></div>')))
 
 # ---------------- VILLAGE
 village_body=f'''
 <section><div class="wrap split top">
 <div><p class="kicker">The plan</p><h2>Two phases, twenty-seven homesites</h2><div class="hair"></div>
-<p class="lede">Phase One has eight lots: three duplex buildings, now complete, and five single-family homesites. Phase Two adds nineteen more.</p>
+<p class="lede">Phase One has three duplex buildings, now complete, five single-family homesites offered at $115,000 each, and the model home lot. Phase Two adds nineteen more homesites.</p>
 <p>Lots in Phase One range from about 1.0 to 1.3 acres on level ground. Every home in the village belongs to the same homeowners' association.</p></div>
 <div>{spec([
  ("Developer","Echo Lake Investments, LLC",""),
- ("Phase One","8 lots: 3 duplex buildings and 5 single-family homesites","Keegan Rice, Sept 19, 2026"),
- ("Phase Two","19 lots "+tbd("mix of single-family and duplex"),"Keegan Rice, Sept 19, 2026"),
+ ("Phase One","3 duplex buildings, 5 single-family homesites and the model home lot, as drawn on the engineer&rsquo;s plan "+tbd("final lot count: plan shows nine numbered lots"),"Horizons Engineering site plan; Keegan Rice"),
+ ("Phase Two","19 lots "+tbd("mix of single-family and duplex"),"Keegan Rice"),
  ("Phase One lot sizes","43,605 to 58,310 sq ft","Horizons Engineering site plan, sheet 1"),
- ("Single-family homesites",tbd("public lot pricing and which lots are released"),""),
+ ("Single-family homesites","$115,000 per lot. Lots 2, 3, 4, 8 and 9 are available","Listing agreement; Keegan Rice"),
  ("Roads","Private. Maintained by the homeowners' association","Site plan general note 2; Keegan Rice"),
- ("Stormwater","Maintained by the homeowners' association","Keegan Rice, Sept 19, 2026"),
+ ("Stormwater","Maintained by the homeowners' association","Keegan Rice"),
  ("Water","Public water","MLS sheets; site plan"),
  ("Wastewater","Private septic on each lot, State-approved designs","NHDES approvals on file"),
  ("Utilities","Underground electric. Cable, phone and high-speed internet available","MLS sheets"),
 ])}</div></div></section>
-<section class="band-paper"><div class="wrap"><p class="kicker">Site map</p><h2>The lay of the land</h2><div class="hair"></div>
-{tbdblock("Illustrated site map in production","Traced from the Horizons Engineering plan in the brand palette, with every lot numbered and its status shown. Needs the current approved plan set and the Phase Two layout.")}
+<section class="band-paper"><div class="wrap"><p class="kicker">Site plan</p><h2 id="site-plan">Phase One, lot by lot</h2><div class="hair"></div>
+{siteplan.block()}
 <div style="height:28px"></div>{gallery(GSITE,"site",[])}
 <p class="note" style="margin-top:14px">Aerial photography August 31, 2026.</p></div></section>
 <section><div class="wrap split top">
@@ -179,7 +180,10 @@ def building(fn,addr,name,heroimg,herocredit,lead,facts,intro_html,items,folder,
 <div><video controls preload="none" poster="{pre}assets/video/{video}-walkthrough-poster.jpg"><source src="{pre}assets/video/{video}-walkthrough-720p.mp4" type="video/mp4"></video></div></div></section>
 <section class="band-paper" id="plans"><div class="wrap"><p class="kicker">Floor plans</p><h2>Level by level</h2><div class="hair"></div>
 <div class="plans">{"".join(f'<figure><figcaption>{c}</figcaption><img src="{pre}assets/img/plans/{f}" alt="{c} floor plan with room dimensions" loading="lazy"></figure>' for c,f in plans)}</div>
-<p class="note" style="margin-top:14px">Plans generated by CubiCasa from an on-site scan. Dimensions are approximate. {tbd("branded plan sheets to replace these")}</p></div></section>
+<p class="note" style="margin-top:14px">Plans generated by CubiCasa from an on-site scan. Dimensions are approximate. {tbd("branded plan sheets to replace these")}</p>
+<h3 style="margin-top:48px">In three dimensions</h3><p>The same scan, rendered as a dollhouse view of both residences. It is the quickest way to see how the rooms relate.</p>
+<div class="plans">{"".join(f'<figure class="p3d"><figcaption>{c}</figcaption><img src="{pre}assets/img/plans3d/{video}-{k}-3d.jpg" alt="{c}: three-dimensional floor plan rendering of both residences" loading="lazy"></figure>' for c,k in [("Main level","main-level"),("Upper level","upper-level")])}</div>
+<p class="note" style="margin-top:14px">3D renderings by CubiCasa. Furniture, finishes and colors in the renderings are illustrative and are not included.</p></div></section>
 <section><div class="wrap"><p class="kicker">Details</p><h2>Facts and specifications</h2><div class="hair"></div>{spec(specrows)}</div></section>
 <section class="band-paper tight"><div class="wrap"><p class="kicker">Downloads</p><h2>Documents for this residence</h2><div class="hair"></div><div class="doclist">{docs}</div></div></section>
 {cta(pre)}'''
@@ -198,7 +202,7 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
  G281,"281",[("exterior","Exterior"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Garage and basement")],"281",
  [("Main level","281-main-level.jpg"),("Upper level","281-upper-level.jpg"),("Basement","281-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
-  ("Address","281 Solar Spring Circle, Carroll (Twin Mountain), NH "+tbd("ZIP code: documents show 03595 and 03598"),"Tax card per Keegan Rice"),
+  ("Address","281 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card per Keegan Rice"),
   ("Tax map","Map 206, Lot 58.4","Listing agreement; septic plan"),
   ("Lot","1.00 acre, level, surveyed, 125 ft of frontage","MLS sheet"),
   ("Residences","Two, side by side. Each 4 bedrooms, 3 full baths, approx. 1,792 sq ft (3,584 sq ft total)","Assessor via MLS sheet"),
@@ -210,9 +214,9 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
   ("Electric","200-amp service, underground. Separate electric and propane meters for each residence","MLS sheet"),
   ("Water and septic","Public water. Private septic shared by the two residences: 8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2021112215 dated November 22, 2021","Horizons Engineering septic plan, Lot 5"),
   ("Finishes","Granite counters, wood cabinetry with crown molding, tile in kitchens and baths, plank flooring, oak stair treads, recessed lighting","Keegan Rice; photos"),
-  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups on the second floor "+tbd("microwaves"),"Photos; MLS sheet"),
+  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups on the second floor","Photos; Keegan Rice"),
   ("Outdoors","Covered entry porches. Stamped concrete patio for each residence, about 24 by 9 ft","CubiCasa scan; aerial photos"),
-  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller "+tbd("paving date"),"Listing agreement, section 9"),
+  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9; Keegan Rice"),
   ("Taxes","$6,727 (2025)","MLS sheet"),
   ("Association dues",tbd("from HOA budget"),""),
   ("Warranty",tbd("builder and manufacturer warranty terms"),"")],
@@ -227,11 +231,11 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
  G37,"37",[("exterior","Exterior"),("access","Accessible features"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Basement")],"37",
  [("Main level","37-main-level.jpg"),("Upper level","37-upper-level.jpg"),("Basement","37-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
-  ("Address","37 Solar Spring Circle, Carroll (Twin Mountain), NH "+tbd("ZIP code"),"Tax card per Keegan Rice"),
+  ("Address","37 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card per Keegan Rice"),
   ("Tax map","Map 206, Lot 58.6","Listing agreement; septic plan"),
   ("Lot","1.12 acres (48,787 sq ft), level, surveyed, 151 ft of frontage","MLS sheet"),
   ("Residences","Two, side by side. Each 4 bedrooms and 2 full baths","Floor plan; confirmed by Keegan Rice"),
-  ("Living area","Approx. 1,400 sq ft per residence, 2,803 sq ft total, as measured by 3D scan "+tbd("assessor or builder figure"),"CubiCasa scan, Aug 31, 2026"),
+  ("Living area","Approx. 1,400 sq ft per residence, 2,803 sq ft total, as measured by 3D scan "+tbd("assessor or builder figure"),"CubiCasa scan"),
   ("Accessible features","In both residences: garage ramp with handrails to the kitchen entry, first-floor bedroom, main-level bath with roll-in shower, two shower heads and wall-mounted sink, lever door handles "+tbd("design standard, clear door and hall widths"),"Photos; floor plan; Keegan Rice"),
   ("Garage","Attached garage for each residence, about 20 by 23 ft, with opener","CubiCasa scan; photos"),
   ("Basement","Full, unfinished, insulated ceiling, bulkhead access","MLS sheet; photos"),
@@ -241,9 +245,9 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
   ("Electric","200-amp service. Separate electric and propane meters for each residence","MLS sheet"),
   ("Water and septic","Public water. Private septic shared by the two residences: 8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2023082407 dated August 24, 2023","Horizons Engineering septic plan, Lot 7"),
   ("Finishes","Formica kitchen counters, granite bath vanity tops, white shaker-style cabinetry, tile in kitchens, plank flooring, oak staircase","Keegan Rice; photos"),
-  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups "+tbd("microwaves; laundry location"),"Photos; MLS sheet"),
+  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups "+tbd("laundry location"),"Photos; Keegan Rice"),
   ("Outdoors","Gabled entry porches. Stamped concrete patio for each residence, about 20 by 8 ft","CubiCasa scan; photos"),
-  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller "+tbd("paving date"),"Listing agreement, section 9"),
+  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9; Keegan Rice"),
   ("Taxes",tbd("current assessment is land only"),"MLS sheet"),
   ("Association dues",tbd("from HOA budget"),""),
   ("Warranty",tbd("builder and manufacturer warranty terms"),"")],
@@ -258,12 +262,12 @@ write("residences/295-solar-spring-circle.html",page("residences/295-solar-sprin
 <section class="band-paper tight"><div class="wrap">{gallery([g for g in GSITE if g[0] in ("DJI_0647","DJI_0618")],"site",[],"../")}</div></section>{cta("../")}''',pre="../"))
 
 # ---------------- HUNTER
-HUNTER_SPEC=spec([("Plan","Westchester Modular Homes “Hunter,” 60 by 27 ft, single level","Westchester plan set, serial 26129, July 1, 2026"),
+HUNTER_SPEC=spec([("Plan","Westchester Modular Homes “Hunter,” 60 by 27 ft, single level","Westchester plan set, serial 26129"),
 ("Rooms","Living room 18′10″ x 12′9″, primary bedroom 13′2″ x 16′4″, bedrooms 10′6″ x 12′9″, dining 10′9″ x 12′9″, kitchen with pantry","Plan set, sheet 3A"),
 ("Garage","Attached, 24 by 24 ft, two overhead doors","Plan set"),("Basement","Full","Plan set, sheet 2"),
 ("Envelope","R-21 walls with 1-inch rigid foam, R-49 roof, Andersen 200 Series windows, 90 psf design snow load","Plan set"),
 ("Exterior","Siding, shake-style gables, stone accents and PVC trim "+tbd("final colors and materials as built"),"Plan set; rendering"),
-("Price",tbd("model home price and base price for future builds"),""),("Completion","Fall 2026 "+tbd("open house date"),"Keegan Rice, Sept 19, 2026")])
+("Price",tbd("model home price and base price for future builds"),""),("Completion","Fall 2026 "+tbd("open house date"),"Keegan Rice")])
 hunter_body=f'''
 <section><div class="wrap split top"><div><p class="kicker">1 Solar Spring Circle &middot; Model home</p><h2>Everything on one level</h2><div class="hair"></div>
 <p class="lede">The Hunter is a single-level home by Westchester Modular Homes, and the model for the single-family homesites at Twin Peaks Village.</p>
@@ -275,32 +279,40 @@ hunter_body=f'''
 {tbdblock("Set day and construction photographs","Photos or video from September 16 and weekly progress through fit-up.")}</div></section>
 <section><div class="wrap split top"><div><p class="kicker">Build with us</p><h2>Your home, on your lot</h2><div class="hair"></div>
 <p>Five single-family homesites are part of Phase One, with nineteen more lots in Phase Two. Future homes are built under the developer's construction manager, who works with each buyer from plan selection through final fit-up.</p>
-<p>{tbd("standard features, options list and lot pricing")}</p></div>
+<p>Single-family homesites are offered at $115,000. {tbd("standard features, options list and home package pricing")}</p></div>
 <div class="people"><div class="person"><b>Charles Allen</b><span>Construction manager, Construction Management &amp; Estimating<br>PO Box 71, Madison, NH 03849</span><a href="tel:+16033878917">603-387-8917</a><a href="mailto:constructionmanager6426@aol.com">constructionmanager6426@aol.com</a></div></div></div></section>
 {cta()}'''
 write("hunter.html",page("hunter.html","The Hunter model home","The Hunter, a single-level model home at Twin Peaks Village.",hunter_body,
  hero("assets/img/model/hunter-rendering_1536.jpg","The model home","The Hunter","Three bedrooms, two baths and a two-car garage on one level. Set September 16, 2026 and finishing this fall.",credit="Artist's rendering. Landscaping, driveway and background are illustrative.")))
 
 # ---------------- LOCATION
-def place(n,d): return f'<tr><th scope="row">{n}</th><td>{d}<span class="src">{tbd("measured drive time")}</span></td></tr>'
+def place(n,d,mi,mins,src="est"):
+    return f'<tr><th scope="row">{n}</th><td>{d}</td><td class="num">{mi}</td><td class="num">{mins}</td></tr>'
 location_body=f'''
 <section><div class="wrap split top"><div><p class="kicker">Getting here</p><h2>Just south of the junction</h2><div class="hair"></div>
-<p class="lede">From the intersection of US Route 3 and US Route 302 in Twin Mountain, head south on Route 3. Solar Spring Circle is about three tenths of a mile on the left.</p>
+<p class="lede">Twin Peaks Village is on Solar Spring Circle in Carroll, New Hampshire 03595. From the intersection of US Route 3 and US Route 302 in Twin Mountain, head south on Route 3. Solar Spring Circle is about three tenths of a mile on the left.</p>
 <p class="note">Directions from the Horizons Engineering plans on file.</p>
 {tbdblock("Location map","Branded map showing the village, Routes 3 and 302, and the destinations below.")}</div>
 <div><img src="assets/img/site/DJI_0623_2000.jpg" alt="Aerial view across Route 3 and the valley from above Twin Peaks Village" loading="lazy"></div></div></section>
 <section class="band-paper"><div class="wrap"><p class="kicker">Nearby</p><h2>What is close at hand</h2><div class="hair"></div>
-<table class="spec"><tbody>
-{place("Bretton Woods","Alpine and Nordic skiing, golf and four-season resort activities")}
-{place("Cannon Mountain and Franconia Notch State Park","Skiing, the aerial tramway, Echo Lake and the notch trail network")}
-{place("Crawford Notch State Park","Hiking, waterfalls and Route 302 through the notch")}
-{place("Mount Washington Cog Railway","The mountain-climbing railway to the summit of Mount Washington")}
-{place("Presidential Range trailheads","Mount Washington, Mount Jefferson, Mount Adams and the surrounding peaks")}
-{place("Ammonoosuc River","Fishing and paddling")}
-{place("Snowmobile corridor trails","The regional trail network passes near the village "+tbd("access route, with the local club"))}
-{place("Littleton and Bethlehem","Dining, shopping, hospital and services")}
-</tbody></table>
-<p class="note" style="margin-top:16px">Places are listed for geographic reference only. Twin Peaks Village is not affiliated with any resort, railway or park.</p></div></section>
+<div class="scroll"><table class="spec drive"><thead><tr><th scope="col">Destination</th><th scope="col">What is there</th><th scope="col" class="num">Miles</th><th scope="col" class="num">Drive</th></tr></thead><tbody>
+{place("Ammonoosuc River","Fishing and paddling, right in the village","1","3 min")}
+{place("Bretton Woods","Alpine and Nordic skiing, golf and four-season resort activities","4","10 min")}
+{place("Bethlehem","Main Street dining, galleries and golf","9","15 min")}
+{place("Crawford Notch","Trailheads at the top of the notch, with the state park and waterfalls a few miles beyond","9","15 min")}
+{place("Cannon Mountain and Franconia Notch State Park","Skiing, the aerial tramway, Echo Lake and the notch trail network","11","15 min")}
+{place("Mount Washington Cog Railway","The mountain-climbing railway to the summit of Mount Washington","11","18 min")}
+{place("Presidential Range trailheads","Ammonoosuc Ravine and Jewell trails to Mount Washington and the northern peaks","11","18 min")}
+{place("Littleton","Dining, shopping, hospital and services","17","25 min")}
+</tbody></table></div>
+<p class="note" style="margin-top:16px">Approximate drive times from Solar Spring Circle in normal conditions; winter weather and peak weekends add time. Bretton Woods, Cannon Mountain and Cog Railway figures are those published by the Twin Mountain-Bretton Woods Chamber of Commerce; the rest are mapping estimates. Places are listed for geographic reference only. Twin Peaks Village is not affiliated with any resort, railway or park.</p></div></section>
+<section><div class="wrap split top"><div><p class="kicker">Winter</p><h2>Snowmobile corridor trails</h2><div class="hair"></div>
+<p class="lede">New Hampshire's snowmobile corridor network runs through Twin Mountain, with trails passing just north of Route 3 across from the village.</p>
+<p>Trail routes, openings and conditions change through the season. The New Hampshire Snowmobile Association keeps a live interactive map of the statewide system.</p>
+<div class="btns"><a class="btn dark" href="https://slednh.evtrails.com/#" target="_blank" rel="noopener">Open the NH trail map</a></div>
+<p class="note" style="margin-top:16px">Riders should confirm legal access routes and current conditions with the local club before riding. {tbd("access route from the village to the corridor trail")}</p></div>
+<div><figure style="margin:0;background:#fff;border:1px solid var(--rule);padding:10px"><img src="assets/img/site/snowmobile-trail-map.jpg" alt="Map of snowmobile corridor trails around Twin Peaks Village in Twin Mountain" loading="lazy" style="aspect-ratio:auto"></figure>
+<p class="note" style="margin-top:10px">Corridor trails shown in magenta. For reference only.</p></div></div></section>
 <section><div class="wrap"><p class="kicker">On the horizon</p><h2>The Presidential Range from above the village</h2><div class="hair"></div>
 {gallery([g for g in GSITE if g[0] in ("DJI_0626","DJI_0619","DJI_0636","DJI_0623")],"site",[])}
 <p class="note" style="margin-top:14px">Aerial photographs taken by drone above the property. Views from ground level and from individual homes vary. {tbd("foliage and winter photography")}</p></div></section>
@@ -313,7 +325,7 @@ documents_body=f'''<section><div class="wrap narrow"><p class="kicker">Offering 
 <p class="lede">Everything a buyer or buyer's agent needs, in one place. Documents are added here as they are finalized.</p>
 <h4 style="margin-top:36px">281 Solar Spring Circle</h4><div class="doclist">{doc("Floor plans with dimensions","CubiCasa, all levels","docs/281-solar-spring-circle-floor-plans.pdf")}{doc("State-approved septic plan","NHDES eCA2021112215","docs/281-solar-spring-circle-septic-plan.pdf")}{doc("Property brochure","In production")}{doc("Seller's property disclosure","From the seller")}</div>
 <h4 style="margin-top:36px">37 Solar Spring Circle</h4><div class="doclist">{doc("Floor plans with dimensions","CubiCasa, all levels","docs/37-solar-spring-circle-floor-plans.pdf")}{doc("State-approved septic plan","NHDES eCA2023082407","docs/37-solar-spring-circle-septic-plan.pdf")}{doc("Accessibility feature sheet","In production")}{doc("Property brochure","In production")}{doc("Seller's property disclosure","From the seller")}</div>
-<h4 style="margin-top:36px">The village</h4><div class="doclist">{doc("Declaration of covenants and bylaws","From Attorney Andy Sullivan")}{doc("Association budget and dues","From Attorney Andy Sullivan")}{doc("Purchase and sale agreement","Standard form, with any development addenda")}{doc("Illustrated site map","In production")}{doc("Construction specification","Westchester Modular Homes duplex and Hunter specifications")}{doc("Community offering package","In production, pending association documents")}</div>
+<h4 style="margin-top:36px">The village</h4><div class="doclist">{doc("Declaration of covenants and bylaws","From Attorney Andy Sullivan")}{doc("Association budget and dues","From Attorney Andy Sullivan")}{doc("Purchase and sale agreement","Standard form, with any development addenda")}<div class="doc"><div><b>Interactive site plan</b><span>Phase One, lot by lot</span></div><a href="village.html#site-plan">Open</a></div>{doc("Construction specification","Westchester Modular Homes duplex and Hunter specifications")}{doc("Community offering package","In production, pending association documents")}</div>
 </div></section>{cta()}'''
 write("documents.html",page("documents.html","Documents","Offering documents for Twin Peaks Village.",documents_body))
 
@@ -329,7 +341,7 @@ contact_body=f'''<section><div class="wrap split top"><div><p class="kicker">Inq
 <p class="note">Your inquiry goes to the listing agents at Badger Peabody &amp; Smith Realty. We do not share your information.</p></form></div>
 <div><div class="people" style="grid-template-columns:1fr">
 <div class="person"><b>Keegan Rice</b><span>REALTOR&reg;, NH Lic. #072031 &middot; Badger Peabody &amp; Smith Realty</span><a href="tel:+16033487261">603-348-7261</a><a href="mailto:KeeganR@BadgerPeabodySmith.com">KeeganR@BadgerPeabodySmith.com</a></div>
-<div class="person"><b>Matthew Penner</b><span>Badger Peabody &amp; Smith Realty {tbd("title and license number")}</span><a href="tel:+16037145148">603-714-5148</a><a href="mailto:MatthewP@BadgerPeabodySmith.com">MatthewP@BadgerPeabodySmith.com</a></div>
+<div class="person"><b>Matthew Penner</b><span>Associate Broker, NH Lic. #067058 &middot; Badger Peabody &amp; Smith Realty</span><a href="tel:+16037145148">603-714-5148</a><a href="mailto:MatthewP@BadgerPeabodySmith.com">MatthewP@BadgerPeabodySmith.com</a></div>
 <div class="person"><b>Badger Peabody &amp; Smith Realty</b><span>Bretton Woods office &middot; 603-259-0210<br>{tbd("office street address and brokerage disclosure line")}</span></div></div></div></div></section>'''
 write("contact.html",page("contact.html","Inquire","Contact the listing agents for Twin Peaks Village.",contact_body))
 write("thanks.html",page("thanks.html","Thank you","",'<section><div class="wrap narrow"><p class="kicker">Received</p><h2>Thank you</h2><div class="hair"></div><p class="lede">Your inquiry is on its way to Keegan Rice and Matthew Penner. One of us will be in touch shortly.</p><div class="btns"><a class="btn dark" href="index.html">Back to the village</a></div></div></section>'))

@@ -10,6 +10,7 @@ def cp(a,b):
     if not os.path.exists(b) or os.path.getmtime(a)>os.path.getmtime(b): shutil.copy2(a,b)
 for k in ["281","37","site","model"]:
     for f in glob.glob(f"{P}/media/edited/web/{k}/*.jpg"): cp(f,f"{D}/assets/img/{k}/{os.path.basename(f)}")
+for f in glob.glob(f"{P}/media/edited/web/plans3d/*.jpg"): cp(f,f"{D}/assets/img/plans3d/{os.path.basename(f)}")
 for f in glob.glob(f"{P}/media/edited/video/*"): cp(f,f"{D}/assets/video/{os.path.basename(f)}")
 for f in glob.glob(f"{P}/brand/logos-vector/*.svg")+[f"{P}/brand/logos-vector/04_icon_mark_hires.png",f"{P}/brand/bps-logos/bps_logo_rev.png"]: cp(f,f"{D}/assets/brand/{os.path.basename(f)}")
 for b in ["281","37"]:
