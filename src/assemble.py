@@ -12,6 +12,17 @@ for k in ["281","37","site","model"]:
     for f in glob.glob(f"{P}/media/edited/web/{k}/*.jpg"): cp(f,f"{D}/assets/img/{k}/{os.path.basename(f)}")
 for f in glob.glob(f"{P}/media/edited/web/site/*.webp"): cp(f,f"{D}/assets/img/site/{os.path.basename(f)}")
 cp(f"{P}/documents/plans/site-plans/Phase 1 Site Plan.pdf",f"{D}/docs/echo-lake-subdivision-phase-1-site-plan.pdf")
+for src,dst in [
+ ("association/HOA Budget 2026 Phase I (signed).pdf","hoa-budget-2026-phase-1.pdf"),
+ ("association/HOA Rules effective 2026-10-01 (signed).pdf","hoa-rules-2026.pdf"),
+ ("disclosures/HOA Disclosure Rider 2026-09-25.pdf","hoa-disclosure-rider.pdf"),
+ ("disclosures/Property Disclosure Duplex 2026-09-25.pdf","property-disclosure-duplex.pdf"),
+ ("disclosures/Property Disclosure Single Family 2026-09-25.pdf","property-disclosure-single-family.pdf"),
+ ("disclosures/Property Disclosure Land 2026-09-25.pdf","property-disclosure-land.pdf"),
+ ("sales-forms/Purchase and Sale Agreement 2026-09-01.pdf","purchase-and-sale-agreement.pdf"),
+ ("sales-forms/Limited Warranty 2026-09-01.pdf","limited-warranty.pdf"),
+ ("registration/NH AG Certificate of Registration 2026-09-16.pdf","nh-certificate-of-registration.pdf"),
+]: cp(f"{P}/documents/{src}",f"{D}/docs/{dst}")
 for f in glob.glob(f"{P}/media/edited/web/plans3d/*.jpg"): cp(f,f"{D}/assets/img/plans3d/{os.path.basename(f)}")
 for f in glob.glob(f"{P}/media/edited/video/*"): cp(f,f"{D}/assets/video/{os.path.basename(f)}")
 for f in glob.glob(f"{P}/brand/logos-vector/*.svg")+[f"{P}/brand/logos-vector/04_icon_mark_hires.png",f"{P}/brand/bps-logos/bps_logo_rev.png"]: cp(f,f"{D}/assets/brand/{os.path.basename(f)}")

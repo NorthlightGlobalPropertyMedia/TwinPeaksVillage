@@ -37,7 +37,7 @@ def page(fn,title,desc,body,hero=None,pre=""):
 </div>
 <div class="fine">
 <p><strong>Draft language for counsel review.</strong> Information on this site is drawn from the documents and sources named on each page and is believed accurate but is not guaranteed. Prices, plans, specifications, dimensions and availability may change without notice. Square footage and room dimensions are approximate. Images marked "virtually staged" show digital furnishings; images marked "twilight" have a digitally enhanced sky; the image of The Hunter is an artist's rendering, and its landscaping, driveway and background are illustrative. References to resorts, trails and public lands are geographic only and imply no affiliation. Buyers should verify all information, including town and association rules, independently.</p>
-<p>{tbd("RSA 356-A registration statement and any required disclosure wording, from Attorney Andy Sullivan")} &middot; Equal Housing Opportunity &middot; &copy; 2026 Badger Peabody &amp; Smith Realty</p>
+<p>Twin Peaks Village, Phase 1, is registered with the New Hampshire Attorney General&rsquo;s Consumer Protection and Antitrust Bureau under RSA 356-A, NHDOJ No. 2026184379. {tbd("any additional advertising wording RSA 356-A requires, from counsel")} &middot; Equal Housing Opportunity &middot; &copy; 2026 Badger Peabody &amp; Smith Realty</p>
 </div></div></footer>
 <script src="{pre}assets/site.js"></script></body></html>'''
 
@@ -106,10 +106,11 @@ home_body=f'''
 <div class="tl">
 <div><b>Complete</b>Three duplex buildings finished, with gravel roads and utilities in place to serve them.</div>
 <div><b>September 16, 2026</b>The Hunter model home set on its foundation at 1 Solar Spring Circle.</div>
-<div><b>September 2026</b>Subdivision plan approved by the New Hampshire Attorney General's office. {tbd("approval date and registration wording from counsel")}</div>
+<div><b>September 16, 2026</b>Phase One registered with the New Hampshire Attorney General&rsquo;s Consumer Protection and Antitrust Bureau, NHDOJ No. 2026184379, and recorded at the Coos County Registry of Deeds.</div>
 <div class="open"><b>Fall 2026</b>Paving of the road, driveways and walkways by the seller, and final landscaping.</div>
 <div class="open"><b>Fall 2026</b>Model home construction and final fit-up.</div>
-<div class="open"><b>In process</b>Association declaration, bylaws and budget. {tbd("delivery date from Attorney Sullivan")}</div>
+<div><b>September 2026</b>Association budget and rules adopted; rules take effect October 1, 2026.</div>
+<div class="open"><b>In process</b>Recorded declaration and bylaws. {tbd("delivery from counsel")}</div>
 </div></div>
 <div><img src="assets/img/site/DJI_0618_2000.jpg" alt="Aerial view of the three completed duplex buildings" loading="lazy"></div>
 </div></section>
@@ -122,16 +123,16 @@ write("index.html",page("index.html","A new village in the White Mountains","Twi
 village_body=f'''
 <section><div class="wrap split top">
 <div><p class="kicker">The plan</p><h2>Two phases, twenty-seven homesites</h2><div class="hair"></div>
-<p class="lede">Phase One has three duplex buildings, now complete, five single-family homesites offered at $115,000 each, and the model home lot. Phase Two adds nineteen more homesites.</p>
+<p class="lede">Phase One has three duplex buildings, now complete, five single-family homesites offered at $115,000 each, and the model home lot. Phase Two adds eighteen more, for twenty-seven in all.</p>
 <p>Lots in Phase One range from about 1.0 to 1.3 acres on level ground. Every home in the village belongs to the same homeowners' association.</p></div>
 <div>{spec([
  ("Developer","Echo Lake Investments, LLC",""),
- ("Phase One","3 duplex buildings, 5 single-family homesites and the model home lot, as drawn on the engineer&rsquo;s plan "+tbd("final lot count: plan shows nine numbered lots"),"Horizons Engineering site plan; Keegan Rice"),
- ("Phase Two","19 lots "+tbd("mix of single-family and duplex"),"Keegan Rice"),
+ ("Phase One","Nine lots: 3 duplex buildings, 5 single-family homesites and the model home lot","Horizons Engineering site plan; NH Certificate of Registration"),
+ ("Phase Two","18 lots, for a village of 27 "+tbd("mix of single-family and duplex"),"Purchase and sale agreement; association budget"),
  ("Phase One lot sizes","43,605 to 58,310 sq ft","Horizons Engineering site plan, sheet 1"),
- ("Single-family homesites","$115,000 per lot. Lots 2, 3, 4, 8 and 9 are available","Listing agreement; Keegan Rice"),
- ("Roads","Solar Spring Circle and Geodessy Way, both private. Maintained by the homeowners' association","Site plan and its general note 2; Keegan Rice"),
- ("Stormwater","Maintained by the homeowners' association","Keegan Rice"),
+ ("Single-family homesites","$115,000 per lot. Lots 2, 3, 4, 8 and 9 are available","Listing agreement"),
+ ("Roads","Solar Spring Circle and Geodessy Way, both private. Maintained by the homeowners' association","Site plan, general note 2; association budget"),
+ ("Stormwater","Maintained by the homeowners' association","Association budget, drainage maintenance line"),
  ("Water","Public water","MLS sheets; site plan"),
  ("Wastewater","Private septic on each lot, State-approved designs","NHDES approvals on file"),
  ("Utilities","Underground electric. Cable, phone and high-speed internet available","MLS sheets"),
@@ -142,14 +143,15 @@ village_body=f'''
 <p class="note" style="margin-top:14px">Aerial photography August 31, 2026.</p></div></section>
 <section><div class="wrap split top">
 <div><p class="kicker">The association</p><h2>Shared standards, shared care</h2><div class="hair"></div>
-<p>A homeowners' association will own and maintain the private roads and the stormwater system and keep the architecture consistent from one home to the next.</p>
-<p>The association documents as drafted place no restriction on short-term rentals. {tbd("against the final recorded documents")} Town of Carroll rules also apply, and buyers should confirm current requirements with the town.</p></div>
+<p>The Twin Peaks Village Homeowners&rsquo; Association maintains the private roads, the drainage system and the common lawns, plows in winter and sets aside a capital reserve, all for $40 a month per lot on the 2026 budget.</p>
+<p>The seller&rsquo;s association disclosure reports no rental, use or age restrictions and no approvals required to transfer a lot. Dogs and cats are welcome. Town of Carroll rules also apply, and buyers should confirm current requirements with the town.</p></div>
 <div>{spec([
- ("Declaration and bylaws",tbd("from Attorney Andy Sullivan"),""),
- ("Annual budget",tbd("from Attorney Andy Sullivan"),""),
- ("Dues",tbd("amount and frequency"),""),
- ("Architectural review",tbd("process and standards"),""),
- ("Pets, parking, exterior changes",tbd("from final documents"),""),
+ ("Dues","$40 per lot per month on the 2026 Phase One budget of $12,496. Projected at $53.76 in year ten at 3 percent inflation","Association budget, signed"),
+ ("What dues cover","Road maintenance, snow removal, lawn care, drainage maintenance, common-area property tax and a capital reserve","Association budget; HOA disclosure rider"),
+ ("Rules","Effective October 1, 2026. Quiet hours after 10 pm Sunday through Thursday and after 1 am Friday and Saturday. 15 mph on village roads. Exterior changes, fences, outbuildings and color changes need the board&rsquo;s written approval","Association rules, signed"),
+ ("Pets","Dogs and cats allowed. Owners clean up after them","HOA disclosure rider; association rules"),
+ ("Rentals","No rental, use or age restrictions reported by the seller. Check current Town of Carroll requirements","HOA disclosure rider, item 4"),
+ ("Declaration and bylaws",tbd("recorded declaration and bylaws from counsel"),""),
 ])}</div></div></section>
 <section class="band-forest"><div class="wrap"><p class="kicker">Who is building it</p><h2>The team</h2><div class="hair"></div>
 <div class="people">
@@ -202,25 +204,25 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
  G281,"281",[("exterior","Exterior"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Garage and basement")],"281",
  [("Main level","281-main-level.jpg"),("Upper level","281-upper-level.jpg"),("Basement","281-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
-  ("Address","281 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card per Keegan Rice"),
+  ("Address","281 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card"),
   ("Tax map","Map 206, Lot 58.4","Listing agreement; septic plan"),
   ("Lot","1.00 acre, level, surveyed, 125 ft of frontage","MLS sheet"),
   ("Residences","Two, side by side. Each 4 bedrooms, 3 full baths, approx. 1,792 sq ft (3,584 sq ft total)","Assessor via MLS sheet"),
-  ("Garage","Attached two-car garage for each residence, four bays in all, with openers","Photos; floor plan; Keegan Rice"),
+  ("Garage","Attached two-car garage for each residence, four bays in all, with openers","Photos; floor plan"),
   ("Basement","Full, unfinished, insulated ceiling, bulkhead access. Approx. 1,792 sq ft total","Assessor via MLS sheet"),
-  ("Built","2023. New construction, never occupied","MLS sheet; Keegan Rice"),
-  ("Construction","Modular, by Westchester Modular Homes. Wood frame, vinyl siding, asphalt shingle roof. R-21 walls with 1-inch rigid foam, Andersen 200 Series windows, 91 psf design snow load, one-hour fire separation and 56 STC sound-rated wall between residences","Westchester plan set, serial 23130; applicability confirmed by Keegan Rice"),
+  ("Built","2023. New construction, never occupied","MLS sheet"),
+  ("Construction","Modular, by Westchester Modular Homes. Wood frame, vinyl siding, asphalt shingle roof. R-21 walls with 1-inch rigid foam, Andersen 200 Series windows, 91 psf design snow load, one-hour fire separation and 56 STC sound-rated wall between residences","Westchester plan set, serial 23130"),
   ("Heat and hot water","Propane hot water baseboard, multiple zones per residence. On-demand water heater. No central cooling","MLS sheet; photos"),
   ("Electric","200-amp service, underground. Separate electric and propane meters for each residence","MLS sheet"),
   ("Water and septic","Public water. Private septic shared by the two residences: 8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2021112215 dated November 22, 2021","Horizons Engineering septic plan, Lot 5"),
-  ("Finishes","Granite counters, wood cabinetry with crown molding, tile in kitchens and baths, plank flooring, oak stair treads, recessed lighting","Keegan Rice; photos"),
-  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups on the second floor","Photos; Keegan Rice"),
+  ("Finishes","Granite counters, wood cabinetry with crown molding, tile in kitchens and baths, plank flooring, oak stair treads, recessed lighting","Photos"),
+  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups on the second floor","Photos"),
   ("Outdoors","Covered entry porches. Stamped concrete patio for each residence, about 24 by 9 ft","CubiCasa scan; aerial photos"),
-  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9; Keegan Rice"),
+  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9"),
   ("Taxes","$6,727 (2025)","MLS sheet"),
-  ("Association dues",tbd("from HOA budget"),""),
-  ("Warranty",tbd("builder and manufacturer warranty terms"),"")],
- doc("Floor plans with dimensions","All three levels, CubiCasa, PDF","../docs/281-solar-spring-circle-floor-plans.pdf")+doc("State-approved septic plan","Horizons Engineering, Lot 5, NHDES eCA2021112215","../docs/281-solar-spring-circle-septic-plan.pdf")+doc("Property brochure","Eight pages, in production")+doc("Seller's property disclosure","From the seller"))
+  ("Association dues","$40 per month per lot, 2026 budget","Association budget"),
+  ("Warranty","Seller&rsquo;s one-year limited warranty on workmanship and materials, five years on structure. Manufacturer warranties on appliances and equipment pass to the buyer","Limited warranty; purchase and sale agreement, section 14")],
+ doc("Floor plans with dimensions","All three levels, CubiCasa, PDF","../docs/281-solar-spring-circle-floor-plans.pdf")+doc("State-approved septic plan","Horizons Engineering, Lot 5, NHDES eCA2021112215","../docs/281-solar-spring-circle-septic-plan.pdf")+doc("Property brochure","Eight pages, in production")+doc("Seller's property disclosure","Duplex, September 25, 2026","../docs/property-disclosure-duplex.pdf"))
 
 building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The Colonial at the Gate","assets/img/37/LSD01943twilight_2000.jpg","Twilight sky digitally enhanced.",
  "A gray colonial on the largest of the duplex lots, the first building you reach from Route 3, and the one designed around ease of movement.",
@@ -231,27 +233,27 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
  G37,"37",[("exterior","Exterior"),("access","Accessible features"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Basement")],"37",
  [("Main level","37-main-level.jpg"),("Upper level","37-upper-level.jpg"),("Basement","37-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
-  ("Address","37 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card per Keegan Rice"),
+  ("Address","37 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card"),
   ("Tax map","Map 206, Lot 58.6","Listing agreement; septic plan"),
   ("Lot","1.12 acres (48,787 sq ft), level, surveyed, 151 ft of frontage","MLS sheet"),
-  ("Residences","Two, side by side. Each 4 bedrooms and 2 full baths","Floor plan; confirmed by Keegan Rice"),
+  ("Residences","Two, side by side. Each 4 bedrooms and 2 full baths","Floor plan"),
   ("Living area","Approx. 1,400 sq ft per residence, 2,803 sq ft total, as measured by 3D scan "+tbd("assessor or builder figure"),"CubiCasa scan"),
-  ("Accessible features","In both residences: garage ramp with handrails to the kitchen entry, first-floor bedroom, main-level bath with roll-in shower, two shower heads and wall-mounted sink, lever door handles "+tbd("design standard, clear door and hall widths"),"Photos; floor plan; Keegan Rice"),
+  ("Accessible features","In both residences: garage ramp with handrails to the kitchen entry, first-floor bedroom, main-level bath with roll-in shower, two shower heads and wall-mounted sink, lever door handles "+tbd("design standard, clear door and hall widths"),"Photos; floor plan"),
   ("Garage","Attached garage for each residence, about 20 by 23 ft, with opener","CubiCasa scan; photos"),
   ("Basement","Full, unfinished, insulated ceiling, bulkhead access","MLS sheet; photos"),
-  ("Built","2023. New construction, never occupied","MLS sheet; Keegan Rice"),
-  ("Construction","Modular, by Westchester Modular Homes. Wood frame, vinyl siding, asphalt shingle roof. R-21 walls with 1-inch rigid foam, Andersen 200 Series windows, one-hour fire separation and 56 STC sound-rated wall between residences","Westchester duplex specification; applicability confirmed by Keegan Rice"),
+  ("Built","2023. New construction, never occupied","MLS sheet"),
+  ("Construction","Modular, by Westchester Modular Homes. Wood frame, vinyl siding, asphalt shingle roof. R-21 walls with 1-inch rigid foam, Andersen 200 Series windows, one-hour fire separation and 56 STC sound-rated wall between residences","Westchester duplex specification"),
   ("Heat and hot water","Propane hot water baseboard, multiple zones per residence. On-demand water heater. No central cooling","MLS sheet; photos"),
   ("Electric","200-amp service. Separate electric and propane meters for each residence","MLS sheet"),
   ("Water and septic","Public water. Private septic shared by the two residences: 8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2023082407 dated August 24, 2023","Horizons Engineering septic plan, Lot 7"),
-  ("Finishes","Formica kitchen counters, granite bath vanity tops, white shaker-style cabinetry, tile in kitchens, plank flooring, oak staircase","Keegan Rice; photos"),
-  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups "+tbd("laundry location"),"Photos; Keegan Rice"),
+  ("Finishes","Formica kitchen counters, granite bath vanity tops, white shaker-style cabinetry, tile in kitchens, plank flooring, oak staircase","Photos"),
+  ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups "+tbd("laundry location"),"Photos"),
   ("Outdoors","Gabled entry porches. Stamped concrete patio for each residence, about 20 by 8 ft","CubiCasa scan; photos"),
-  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9; Keegan Rice"),
+  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9"),
   ("Taxes",tbd("current assessment is land only"),"MLS sheet"),
-  ("Association dues",tbd("from HOA budget"),""),
-  ("Warranty",tbd("builder and manufacturer warranty terms"),"")],
- doc("Floor plans with dimensions","All three levels, CubiCasa, PDF","../docs/37-solar-spring-circle-floor-plans.pdf")+doc("State-approved septic plan","Horizons Engineering, Lot 7, NHDES eCA2023082407","../docs/37-solar-spring-circle-septic-plan.pdf")+doc("Accessibility feature sheet","Measured clearances and features, in production")+doc("Property brochure","Eight pages, in production")+doc("Seller's property disclosure","From the seller"))
+  ("Association dues","$40 per month per lot, 2026 budget","Association budget"),
+  ("Warranty","Seller&rsquo;s one-year limited warranty on workmanship and materials, five years on structure. Manufacturer warranties on appliances and equipment pass to the buyer","Limited warranty; purchase and sale agreement, section 14")],
+ doc("Floor plans with dimensions","All three levels, CubiCasa, PDF","../docs/37-solar-spring-circle-floor-plans.pdf")+doc("State-approved septic plan","Horizons Engineering, Lot 7, NHDES eCA2023082407","../docs/37-solar-spring-circle-septic-plan.pdf")+doc("Accessibility feature sheet","Measured clearances and features, in production")+doc("Property brochure","Eight pages, in production")+doc("Seller's property disclosure","Duplex, September 25, 2026","../docs/property-disclosure-duplex.pdf"))
 
 # 295 placeholder
 write("residences/295-solar-spring-circle.html",page("residences/295-solar-spring-circle.html","295 Solar Spring Circle","The third duplex at Twin Peaks Village.",
@@ -267,7 +269,7 @@ HUNTER_SPEC=spec([("Plan","Westchester Modular Homes “Hunter,” 60 by 27 ft, 
 ("Garage","Attached, 24 by 24 ft, two overhead doors","Plan set"),("Basement","Full","Plan set, sheet 2"),
 ("Envelope","R-21 walls with 1-inch rigid foam, R-49 roof, Andersen 200 Series windows, 90 psf design snow load","Plan set"),
 ("Exterior","Siding, shake-style gables, stone accents and PVC trim "+tbd("final colors and materials as built"),"Plan set; rendering"),
-("Price",tbd("model home price and base price for future builds"),""),("Completion","Fall 2026 "+tbd("open house date"),"Keegan Rice")])
+("Price",tbd("model home price and base price for future builds"),""),("Completion","Fall 2026 "+tbd("open house date"),"")])
 hunter_body=f'''
 <section><div class="wrap split top"><div><p class="kicker">1 Solar Spring Circle &middot; Model home</p><h2>Everything on one level</h2><div class="hair"></div>
 <p class="lede">The Hunter is a single-level home by Westchester Modular Homes, and the model for the single-family homesites at Twin Peaks Village.</p>
@@ -278,7 +280,7 @@ hunter_body=f'''
 <section class="band-paper"><div class="wrap"><p class="kicker">Progress</p><h2>Watch it rise</h2><div class="hair"></div>
 {tbdblock("Set day and construction photographs","Photos or video from September 16 and weekly progress through fit-up.")}</div></section>
 <section><div class="wrap split top"><div><p class="kicker">Build with us</p><h2>Your home, on your lot</h2><div class="hair"></div>
-<p>Five single-family homesites are part of Phase One, with nineteen more lots in Phase Two. Future homes are built under the developer's construction manager, who works with each buyer from plan selection through final fit-up.</p>
+<p>Five single-family homesites are part of Phase One, with eighteen more lots planned for Phase Two. Future homes are built under the developer's construction manager, who works with each buyer from plan selection through final fit-up.</p>
 <p>Single-family homesites are offered at $115,000. {tbd("standard features, options list and home package pricing")}</p></div>
 <div class="people"><div class="person"><b>Charles Allen</b><span>Construction manager, Construction Management &amp; Estimating<br>PO Box 71, Madison, NH 03849</span><a href="tel:+16033878917">603-387-8917</a><a href="mailto:constructionmanager6426@aol.com">constructionmanager6426@aol.com</a></div></div></div></section>
 {cta()}'''
@@ -323,9 +325,10 @@ write("location.html",page("location.html","Location","Twin Mountain, New Hampsh
 # ---------------- DOCUMENTS
 documents_body=f'''<section><div class="wrap narrow"><p class="kicker">Offering package</p><h2>Documents</h2><div class="hair"></div>
 <p class="lede">Everything a buyer or buyer's agent needs, in one place. Documents are added here as they are finalized.</p>
-<h4 style="margin-top:36px">281 Solar Spring Circle</h4><div class="doclist">{doc("Floor plans with dimensions","CubiCasa, all levels","docs/281-solar-spring-circle-floor-plans.pdf")}{doc("State-approved septic plan","NHDES eCA2021112215","docs/281-solar-spring-circle-septic-plan.pdf")}{doc("Property brochure","In production")}{doc("Seller's property disclosure","From the seller")}</div>
-<h4 style="margin-top:36px">37 Solar Spring Circle</h4><div class="doclist">{doc("Floor plans with dimensions","CubiCasa, all levels","docs/37-solar-spring-circle-floor-plans.pdf")}{doc("State-approved septic plan","NHDES eCA2023082407","docs/37-solar-spring-circle-septic-plan.pdf")}{doc("Accessibility feature sheet","In production")}{doc("Property brochure","In production")}{doc("Seller's property disclosure","From the seller")}</div>
-<h4 style="margin-top:36px">The village</h4><div class="doclist">{doc("Declaration of covenants and bylaws","From Attorney Andy Sullivan")}{doc("Association budget and dues","From Attorney Andy Sullivan")}{doc("Purchase and sale agreement","Standard form, with any development addenda")}<div class="doc"><div><b>Interactive site plan</b><span>Phase One, lot by lot</span></div><a href="village.html#site-plan">Open</a></div>{doc("Engineered site plan set","Horizons Engineering, Echo Lake Subdivision Phase I, PDF, 12.7 MB","docs/echo-lake-subdivision-phase-1-site-plan.pdf")}{doc("Construction specification","Westchester Modular Homes duplex and Hunter specifications")}{doc("Community offering package","In production, pending association documents")}</div>
+<h4 style="margin-top:36px">281 Solar Spring Circle</h4><div class="doclist">{doc("Floor plans with dimensions","CubiCasa, all levels","docs/281-solar-spring-circle-floor-plans.pdf")}{doc("State-approved septic plan","NHDES eCA2021112215","docs/281-solar-spring-circle-septic-plan.pdf")}{doc("Property brochure","In production")}{doc("Seller's property disclosure","Duplex, September 25, 2026","docs/property-disclosure-duplex.pdf")}</div>
+<h4 style="margin-top:36px">37 Solar Spring Circle</h4><div class="doclist">{doc("Floor plans with dimensions","CubiCasa, all levels","docs/37-solar-spring-circle-floor-plans.pdf")}{doc("State-approved septic plan","NHDES eCA2023082407","docs/37-solar-spring-circle-septic-plan.pdf")}{doc("Accessibility feature sheet","In production")}{doc("Property brochure","In production")}{doc("Seller's property disclosure","Duplex, September 25, 2026","docs/property-disclosure-duplex.pdf")}</div>
+<h4 style="margin-top:36px">Single-family homesites</h4><div class="doclist">{doc("Seller's land disclosure","September 25, 2026","docs/property-disclosure-land.pdf")}{doc("Seller's property disclosure","Single-family residence, September 25, 2026","docs/property-disclosure-single-family.pdf")}</div>
+<h4 style="margin-top:36px">The village</h4><div class="doclist">{doc("Certificate of registration","NH Attorney General, RSA 356-A, issued September 16, 2026","docs/nh-certificate-of-registration.pdf")}{doc("Purchase and sale agreement","Standard form with addenda, September 1, 2026","docs/purchase-and-sale-agreement.pdf")}{doc("Limited warranty","Echo Lake Investments, LLC, September 1, 2026","docs/limited-warranty.pdf")}{doc("Association budget","2026, Phase One, signed","docs/hoa-budget-2026-phase-1.pdf")}{doc("Association rules","Effective October 1, 2026, signed","docs/hoa-rules-2026.pdf")}{doc("Association disclosure rider","September 25, 2026","docs/hoa-disclosure-rider.pdf")}{doc("Declaration of covenants and bylaws","Recorded documents to follow from counsel")}<div class="doc"><div><b>Interactive site plan</b><span>Phase One, lot by lot</span></div><a href="village.html#site-plan">Open</a></div>{doc("Engineered site plan set","Horizons Engineering, Echo Lake Subdivision Phase I, PDF, 12.7 MB","docs/echo-lake-subdivision-phase-1-site-plan.pdf")}{doc("Construction specification","Westchester Modular Homes duplex and Hunter specifications")}{doc("Community offering package","In production, pending association documents")}</div>
 </div></section>{cta()}'''
 write("documents.html",page("documents.html","Documents","Offering documents for Twin Peaks Village.",documents_body))
 
@@ -349,10 +352,10 @@ write("thanks.html",page("thanks.html","Thank you","",'<section><div class="wrap
 # ---------------- LEGAL
 legal_body=f'''<section><div class="wrap narrow"><p class="kicker">Legal</p><h2>Disclosures</h2><div class="hair"></div>
 {tbdblock("This page is a draft for Attorney Andy Sullivan","Every paragraph below is proposed wording and should be replaced or approved by counsel before the site is public.")}
-<h3 style="margin-top:36px">Land sales registration</h3><p>{tbd("RSA 356-A registration or exemption statement, registration number and any required notice to purchasers")}</p>
+<h3 style="margin-top:36px">Land sales registration</h3><p>Twin Peaks Village, Phase 1 (Carroll tax map 206, lots 58 and 58.1 through 58.8) is registered with the New Hampshire Department of Justice, Consumer Protection and Antitrust Bureau, under RSA 356-A, NHDOJ No. 2026184379, certificate issued September 16, 2026 and recorded at the Coos County Registry of Deeds, Book 1714, Page 293. Issuance of the certificate does not mean any public agency recommends the subdivision. New Hampshire law gives a purchaser an unqualified right to cancel a purchase and sale agreement within five days, as set out in the agreement. {tbd("counsel to confirm this wording satisfies RSA 356-A advertising requirements")}</p>
 <h3>Accuracy</h3><p>Information on this site comes from the seller, public records, engineering plans, the manufacturer's drawings and on-site scans, as noted on each page. It is believed accurate but is not guaranteed, and it may change without notice. Square footage and dimensions are approximate. Buyers should verify anything material to their decision.</p>
 <h3>Images</h3><p>Photographs were taken at the property on August 31 and September 1, 2026. Images labeled "virtually staged" contain digital furnishings that are not included in the sale. Twilight images have a digitally enhanced sky. The image of The Hunter is an artist's rendering; landscaping, paving and background scenery are illustrative and the finished home may differ. Aerial views are from a drone above the property and do not represent the view from any home.</p>
-<h3>Association and use</h3><p>All homes are subject to the declaration, bylaws and rules of the homeowners' association, which will be provided to buyers when final. Municipal zoning and ordinances of the Town of Carroll apply. Nothing on this site is a representation about rental income, appreciation or investment return.</p>
+<h3>Association and use</h3><p>All homes are subject to the declaration, bylaws, rules and budget of the Twin Peaks Village Homeowners&rsquo; Association. The rules and budget are on the Documents page, and the recorded declaration and bylaws will be provided to buyers. Municipal zoning and ordinances of the Town of Carroll apply. Nothing on this site is a representation about rental income, appreciation or investment return.</p>
 <h3>Brokerage</h3><p>Twin Peaks Village is exclusively listed by Badger Peabody &amp; Smith Realty. The listing agents represent the seller. {tbd("firm brokerage disclosure wording and office address")}</p>
 <h3>Fair housing</h3><p>We are pledged to the letter and spirit of the Fair Housing Act and the New Hampshire Law Against Discrimination. Homes at Twin Peaks Village are offered without regard to race, color, religion, sex, disability, familial status, national origin, age, marital status, sexual orientation or gender identity.</p>
 </div></section>'''
