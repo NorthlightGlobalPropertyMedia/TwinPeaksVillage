@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /thanks.html
+Sitemap: https://twinpeaksvillage.com/sitemap.xml

@@ -7,8 +7,10 @@ from data import G281, G37, GSITE
 import siteplan
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); DIST=os.path.join(ROOT,"dist")
 e=html.escape
-def tbd(t): return f'<span class="tbd">To confirm: {e(t)}</span>'
-def tbdblock(t,sub=""): return f'<div class="tbd-block">{e(t)}<small>{e(sub)}</small></div>'
+LIVE=True   # False = internal preview: shows "To confirm" placeholders, the preview ribbon and noindex. True = public site.
+SITE="https://twinpeaksvillage.com/"
+def tbd(t): return "" if LIVE else f'<span class="tbd">To confirm: {e(t)}</span>'
+def tbdblock(t,sub="",pub=""): return (f'<p class="note">{pub}</p>' if pub else "") if LIVE else f'<div class="tbd-block">{e(t)}<small>{e(sub)}</small></div>'
 
 NAV=[("village.html","The Village"),("residences.html","Residences"),("hunter.html","The Hunter"),("location.html","Location"),("documents.html","Documents")]
 def page(fn,title,desc,body,hero=None,pre=""):
@@ -17,12 +19,13 @@ def page(fn,title,desc,body,hero=None,pre=""):
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} | Twin Peaks Village</title><meta name="description" content="{e(desc)}">
-<meta name="robots" content="noindex,nofollow">
+{'<meta name="robots" content="noindex,nofollow">' if (not LIVE or fn=="thanks.html") else f'<link rel="canonical" href="{SITE}{"" if fn=="index.html" else fn}">'}
+<meta property="og:site_name" content="Twin Peaks Village"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website"><meta property="og:url" content="{SITE}{"" if fn=="index.html" else fn}"><meta property="og:image" content="{SITE}assets/img/37/DJI_0626twilight_2000.jpg"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{pre}assets/brand/04_icon_mark_hires.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{pre}assets/site.css"></head><body>
-<div class="ribbon">Preview draft for Echo Lake Investments and counsel &middot; not for public distribution</div>
+{"" if LIVE else '<div class="ribbon">Preview draft for Echo Lake Investments and counsel &middot; not for public distribution</div>'}
 <header class="{head_cls}"><div class="wrap in">
 <a class="brand" href="{pre}index.html"><img src="{pre}assets/brand/05_horizontal_reversed.svg" alt="Twin Peaks Village, Twin Mountain, New Hampshire" width="230" height="46"></a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -36,7 +39,7 @@ def page(fn,title,desc,body,hero=None,pre=""):
 <div><h5>Exclusively listed by</h5><a href="https://www.badgerpeabodysmith.com/" target="_blank" rel="noopener" style="display:inline-block"><img class="bps" src="{pre}assets/brand/bps_logo_rev.png" alt="Badger Peabody &amp; Smith Realty, opens BadgerPeabodySmith.com" width="96" height="107"></a><p style="margin-top:12px"><a href="https://www.badgerpeabodysmith.com/" target="_blank" rel="noopener" style="display:inline">BadgerPeabodySmith.com</a><br>Bretton Woods office &middot; 603-259-0210</p></div>
 </div>
 <div class="fine">
-<p><strong>Draft language for counsel review.</strong> Information on this site is drawn from the documents and sources named on each page and is believed accurate but is not guaranteed. Prices, plans, specifications, dimensions and availability may change without notice. Square footage and room dimensions are approximate. Images marked "virtually staged" show digital furnishings; images marked "twilight" have a digitally enhanced sky; the image of The Hunter is an artist's rendering, and its landscaping, driveway and background are illustrative. References to resorts, trails and public lands are geographic only and imply no affiliation. Buyers should verify all information, including town and association rules, independently.</p>
+<p>{"" if LIVE else "<strong>Draft language for counsel review.</strong> "}Information on this site is drawn from the documents and sources named on each page and is believed accurate but is not guaranteed. Prices, plans, specifications, dimensions and availability may change without notice. Square footage and room dimensions are approximate. Images marked "virtually staged" show digital furnishings; images marked "twilight" have a digitally enhanced sky; the image of The Hunter is an artist's rendering, and its landscaping, driveway and background are illustrative. References to resorts, trails and public lands are geographic only and imply no affiliation. Buyers should verify all information, including town and association rules, independently.</p>
 <p>Twin Peaks Village, Phase 1, is registered with the New Hampshire Attorney General&rsquo;s Consumer Protection and Antitrust Bureau under RSA 356-A, NHDOJ No. 2026184379. {tbd("any additional advertising wording RSA 356-A requires, from counsel")} &middot; Equal Housing Opportunity &middot; &copy; 2026 Badger Peabody &amp; Smith Realty</p>
 </div></div></footer>
 <script src="{pre}assets/site.js"></script></body></html>'''
@@ -58,6 +61,7 @@ def gallery(items,folder,cats,pre=""):
     return f'<div class="gal-wrap">{filt}<div class="gallery" data-gallery>{"".join(cells)}</div></div>'
 
 def spec(rows):
+    rows=[(k,v.strip(),s) for k,v,s in rows if v.strip()]
     return '<table class="spec"><tbody>'+"".join(f'<tr><th scope="row">{k}</th><td>{v}{f"<span class=src>Source: {s}</span>" if s else ""}</td></tr>' for k,v,s in rows)+'</tbody></table>'
 
 def cta(pre=""):
@@ -78,8 +82,9 @@ CARDS="".join([
  card("hunter.html","assets/img/model/hunter-rendering_900.jpg","Model home under construction","1 Solar Spring Circle","The Hunter","Single-level &middot; 3 bedrooms, 2 baths, two-car garage &middot; artist's rendering","Pricing to be announced",gold=True),
 ])
 
+PAGES=[]
 def write(fn,s):
-    p=os.path.join(DIST,fn); os.makedirs(os.path.dirname(p),exist_ok=True); open(p,"w").write(s)
+    PAGES.append(fn); p=os.path.join(DIST,fn); os.makedirs(os.path.dirname(p),exist_ok=True); open(p,"w").write(s)
 
 # ---------------- HOME
 home_body=f'''
@@ -178,7 +183,7 @@ def building(fn,addr,name,heroimg,herocredit,lead,facts,intro_html,items,folder,
 <div class="btns"><a class="btn fill" style="color:var(--forest-deep)" href="{pre}contact.html">Request a showing</a><a class="btn dark" href="#plans">Floor plans</a></div></div></div></div></section>
 <section class="band-paper tight"><div class="wrap"><p class="kicker">Gallery</p><h2>Photographs</h2><div class="hair"></div>{gallery(items,folder,cats,pre)}
 <p class="note" style="margin-top:14px">Photographed September 1, 2026. Images marked "virtually staged" show digital furnishings in the actual room; the unfurnished photo of the same room appears beside it. Twilight images have a digitally enhanced sky.</p></div></section>
-<section><div class="wrap split top"><div><p class="kicker">Walk through</p><h2>Film</h2><div class="hair"></div><p>A continuous walk-through of both residences, recorded from the 3D scan of August 31, 2026.</p><p class="note">{tbd("edited 60 to 90 second film")}</p></div>
+<section><div class="wrap split top"><div><p class="kicker">Walk through</p><h2>Film</h2><div class="hair"></div><p>A continuous walk-through of both residences, recorded from the 3D scan of August 31, 2026.</p>{f'<p class="note">{tbd("edited 60 to 90 second film")}</p>' if not LIVE else ""}</div>
 <div><video controls preload="none" poster="{pre}assets/video/{video}-walkthrough-poster.jpg"><source src="{pre}assets/video/{video}-walkthrough-720p.mp4" type="video/mp4"></video></div></div></section>
 <section class="band-paper" id="plans"><div class="wrap"><p class="kicker">Floor plans</p><h2>Level by level</h2><div class="hair"></div>
 <div class="plans">{"".join(f'<figure><figcaption>{c}</figcaption><img src="{pre}assets/img/plans/{f}" alt="{c} floor plan with room dimensions" loading="lazy"></figure>' for c,f in plans)}</div>
@@ -192,7 +197,7 @@ def building(fn,addr,name,heroimg,herocredit,lead,facts,intro_html,items,folder,
     write(fn,page(fn,f"{addr}",f"{addr}, Twin Peaks Village, Twin Mountain NH.",body,hero(heroimg,addr+" &middot; $950,000",name,lead,credit=herocredit,short=False,pre=pre),pre=pre))
 
 def doc(title,desc,href=None):
-    return f'<div class="doc"><div><b>{title}</b><span>{desc}</span></div>{f"<a href={href}>Download PDF</a>" if href else "<em class=tbd>Coming</em>"}</div>'
+    return f'<div class="doc"><div><b>{title}</b><span>{desc}</span></div>{f"<a href={href}>Download PDF</a>" if href else "<em class=soon>Coming</em>"}</div>'
 
 COMMON_SRC="MLS sheet"
 building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","The Dormer House","assets/img/281/LSD01734twilight_2000.jpg","Twilight sky digitally enhanced.",
@@ -259,10 +264,11 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
 write("residences/295-solar-spring-circle.html",page("residences/295-solar-spring-circle.html","295 Solar Spring Circle","The third duplex at Twin Peaks Village.",
  f'''<section><div class="wrap narrow"><p class="kicker">295 Solar Spring Circle &middot; Map 206, Lot 58.5</p><h2>The third duplex</h2><div class="hair"></div>
 <p class="lede">The third completed duplex stands between 281 and 37 Solar Spring Circle. It shares the dormered design of 281.</p>
-{tbdblock("Photography, floor plans, film and specifications to come","Needs a shoot date and the same scan package as the other two buildings. Pricing and release timing to be confirmed.")}
+{tbdblock("Photography, floor plans, film and specifications to come","Needs a shoot date and the same scan package as the other two buildings. Pricing and release timing to be confirmed.",pub="Photography, floor plans, film and pricing for 295 will be published when the residence is released. Ask the listing agents for an early look.")}
 <div style="height:28px"></div>{spec([("Septic","8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2023090625 dated September 6, 2023","Horizons Engineering septic plan, Lot 6"),("Lot","43,942 sq ft","Horizons Engineering site plan"),("Bedrooms, baths, square footage",tbd("from scan and assessor"),""),("Price",tbd("public price and release date"),"")])}</div></section>
 <section class="band-paper tight"><div class="wrap">{gallery([g for g in GSITE if g[0] in ("DJI_0647","DJI_0618")],"site",[],"../")}</div></section>{cta("../")}''',hero("assets/img/site/DJI_0636_2000.jpg","295 Solar Spring Circle &middot; Coming soon","The third duplex","Between 281 and 37 Solar Spring Circle, with the mountains on the horizon.",credit="Rear aerial of 295 Solar Spring Circle, with 281 beyond",short=True,pre="../"),pre="../"))
 
+PROGRESS="" if LIVE else '<section class="band-paper"><div class="wrap"><p class="kicker">Progress</p><h2>Watch it rise</h2><div class="hair"></div>'+tbdblock("Set day and construction photographs","Photos or video from September 16 and weekly progress through fit-up.")+'</div></section>'
 # ---------------- HUNTER
 HUNTER_SPEC=spec([("Plan","Westchester Modular Homes “Hunter,” 60 by 27 ft, single level","Westchester plan set, serial 26129"),
 ("Rooms","Living room 18′10″ x 12′9″, primary bedroom 13′2″ x 16′4″, bedrooms 10′6″ x 12′9″, dining 10′9″ x 12′9″, kitchen with pantry","Plan set, sheet 3A"),
@@ -277,8 +283,7 @@ hunter_body=f'''
 <p>The home was set on its foundation on September 16, 2026. Construction and final fit-up continue through the fall.</p></div>
 <div><div class="facts" style="margin-top:0"><div><b>3</b><span>Bedrooms</span></div><div><b>2</b><span>Full baths</span></div><div><b>1,630</b><span>Approx. sq ft, from plans</span></div><div><b>2-car</b><span>Attached garage</span></div></div>
 {HUNTER_SPEC}</div></div></section>
-<section class="band-paper"><div class="wrap"><p class="kicker">Progress</p><h2>Watch it rise</h2><div class="hair"></div>
-{tbdblock("Set day and construction photographs","Photos or video from September 16 and weekly progress through fit-up.")}</div></section>
+{PROGRESS}
 <section><div class="wrap split top"><div><p class="kicker">Build with us</p><h2>Your home, on your lot</h2><div class="hair"></div>
 <p>Five single-family homesites are part of Phase One, with eighteen more lots planned for Phase Two. Future homes are built under the developer's construction manager, who works with each buyer from plan selection through final fit-up.</p>
 <p>Single-family homesites are offered at $115,000. {tbd("standard features, options list and home package pricing")}</p></div>
@@ -364,7 +369,13 @@ write("legal.html",page("legal.html","Legal and disclosures","Disclosures for Tw
 # ---------------- static
 shutil.copy(os.path.join(ROOT,"src/site.css"),os.path.join(DIST,"assets/site.css"))
 shutil.copy(os.path.join(ROOT,"src/site.js"),os.path.join(DIST,"assets/site.js"))
-open(os.path.join(DIST,"robots.txt"),"w").write("User-agent: *\nDisallow: /\n")
-open(os.path.join(DIST,"_headers"),"w").write("/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/assets/*\n  Cache-Control: public, max-age=604800\n")
+if LIVE:
+    open(os.path.join(DIST,"robots.txt"),"w").write(f"User-agent: *\nAllow: /\nDisallow: /thanks.html\nSitemap: {SITE}sitemap.xml\n")
+    open(os.path.join(DIST,"_headers"),"w").write("/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: SAMEORIGIN\n/assets/*\n  Cache-Control: public, max-age=604800\n/docs/*\n  Cache-Control: public, max-age=86400\n")
+    urls=[u for u in PAGES if u!="thanks.html"]
+    open(os.path.join(DIST,"sitemap.xml"),"w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{SITE}{'' if u=='index.html' else u}</loc></url>" for u in urls)+"</urlset>\n")
+else:
+    open(os.path.join(DIST,"robots.txt"),"w").write("User-agent: *\nDisallow: /\n")
+    open(os.path.join(DIST,"_headers"),"w").write("/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/assets/*\n  Cache-Control: public, max-age=604800\n")
 open(os.path.join(ROOT,"netlify.toml"),"w").write('[build]\n  publish = "dist"\n  command = ""\n')
 print("built")
