@@ -19,8 +19,10 @@ for src,dst in [
  ("disclosures/Property Disclosure Duplex 2026-09-25.pdf","property-disclosure-duplex.pdf"),
  ("disclosures/Property Disclosure Single Family 2026-09-25.pdf","property-disclosure-single-family.pdf"),
  ("disclosures/Property Disclosure Land 2026-09-25.pdf","property-disclosure-land.pdf"),
- ("sales-forms/Purchase and Sale Agreement 2026-09-01.pdf","purchase-and-sale-agreement.pdf"),
- ("sales-forms/Limited Warranty 2026-09-01.pdf","limited-warranty.pdf"),
+ ("sales-forms/Purchase and Sale Agreement 2026-09-26.pdf","purchase-and-sale-agreement.pdf"),
+ ("sales-forms/Limited Warranty 2026-09-26.pdf","limited-warranty.pdf"),
+ ("sales-forms/Warranty Deed form 2026-09-26.pdf","warranty-deed-form.pdf"),
+ ("association/HOA Declaration and Bylaws final 2026-09-23 (to be recorded).pdf","hoa-declaration-and-bylaws.pdf"),
  ("registration/NH AG Certificate of Registration 2026-09-16.pdf","nh-certificate-of-registration.pdf"),
 ]: cp(f"{P}/documents/{src}",f"{D}/docs/{dst}")
 for f in glob.glob(f"{P}/media/edited/web/plans3d/*.jpg"): cp(f,f"{D}/assets/img/plans3d/{os.path.basename(f)}")
