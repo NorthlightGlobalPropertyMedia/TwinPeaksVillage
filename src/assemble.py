@@ -27,7 +27,7 @@ for src,dst in [
 ]: cp(f"{P}/documents/{src}",f"{D}/docs/{dst}")
 for f in glob.glob(f"{P}/media/edited/web/plans3d/*.jpg"): cp(f,f"{D}/assets/img/plans3d/{os.path.basename(f)}")
 for f in glob.glob(f"{P}/media/edited/video/*"): cp(f,f"{D}/assets/video/{os.path.basename(f)}")
-for f in glob.glob(f"{P}/brand/logos-vector/*.svg")+[f"{P}/brand/logos-vector/04_icon_mark_hires.png",f"{P}/brand/bps-logos/bps_logo_rev.png"]: cp(f,f"{D}/assets/brand/{os.path.basename(f)}")
+for f in glob.glob(f"{P}/brand/logos-vector/*.svg")+[f"{P}/brand/logos-vector/04_icon_mark_hires.png",f"{P}/brand/bps-logos/bps_logo_rev.png",f"{P}/brand/bps-logos/bps_horizontal_rev.png"]: cp(f,f"{D}/assets/brand/{os.path.basename(f)}")
 for b in ["281","37"]:
     cp(glob.glob(f"{P}/documents/floor-plans/{b}-solar-spring-circle/pdf-with-dim/*.pdf")[0],f"{D}/docs/{b}-solar-spring-circle-floor-plans.pdf")
     cp(f"{P}/documents/plans/septic/{b} Solar Spring Septic Plan.pdf",f"{D}/docs/{b}-solar-spring-circle-septic-plan.pdf")
