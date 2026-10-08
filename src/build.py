@@ -172,9 +172,17 @@ village_body=f'''
 write("village.html",page("village.html","The Village","The plan, the association and the team behind Twin Peaks Village.",village_body,
  hero("assets/img/site/DJI_0624_2000.jpg","The Village","Planned with care, built to last","Private roads, public water, underground utilities and a homeowners' association to look after all of it.",short=True)))
 
+
+# How a duplex can be owned. Per Keegan Rice; condominium conversion is subject to local approval.
+OWN_H = "One building, several ways to own it"
+OWN_P = ("Each duplex is purchased as a single building on one lot. Live in one side and rent the other for income. "
+         "Convert the building to a condominium and sell one half, subject to local approval. "
+         "Or keep both sides and have an exceptional amount of room for family and friends, everyone under one roof and each behind their own front door.")
+OWN_HTML = f'<h3>{OWN_H}</h3><p>{OWN_P}</p>'
+
 # ---------------- RESIDENCES INDEX
 write("residences.html",page("residences.html","Residences","Duplex residences and single-family homes at Twin Peaks Village.",
- f'<section><div class="wrap"><p class="kicker">Phase One</p><h2>Residences</h2><div class="hair"></div><p class="lede">Each duplex is sold as one building to one owner: two complete homes side by side, each with its own entrance, garage, basement, meters and heating system.</p><div style="height:20px"></div><div class="cards">{CARDS}</div></div></section>{cta()}',
+ f'<section><div class="wrap"><p class="kicker">Phase One</p><h2>Residences</h2><div class="hair"></div><p class="lede">Each duplex is sold as one building to one owner: two complete homes side by side, each with its own entrance, garage, basement, meters and heating system.</p><p>{OWN_P}</p><div style="height:20px"></div><div class="cards">{CARDS}</div></div></section>{cta()}',
  hero("assets/img/site/DJI_0618_2000.jpg","Residences","Two homes under one roof","Live in one and keep the other for the people you want close, or hold the whole building as your White Mountains base.",short=True)))
 
 # ---------------- BUILDING PAGES
@@ -206,9 +214,9 @@ COMMON_SRC="MLS sheet"
 building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","The Dormer House","assets/img/281/LSD01734twilight_2000.jpg","Twilight sky digitally enhanced.",
  "Two complete four-bedroom homes beneath one dormered roofline, each with a two-car garage, set among mature spruce and birch.",
  [("4 + 4","Bedrooms"),("3 + 3","Full baths"),("3,584","Sq ft finished"),("4","Garage bays"),("1.00","Acre")],
- '''<p class="lede">Two real houses, not two apartments. Each side has a first-floor bedroom and full bath, a 20-foot primary suite with a walk-in closet and private bath, a second-floor laundry room, and its own meters and heating zones.</p>
+ f'''<p class="lede">Two real houses, not two apartments. Each side has a first-floor bedroom and full bath, a 20-foot primary suite with a walk-in closet and private bath, a second-floor laundry room, and its own meters and heating zones.</p>
 <p>A rustic wood beam frames the open living and dining rooms. The kitchen pairs warm wood cabinetry and crown molding with granite counters, tile floors and stainless appliances. Oak stair treads with iron balusters lead upstairs, where two more bedrooms share a hall bath. Out back, each home has its own stamped concrete patio.</p>
-<p>New construction, never occupied. Sold as one building to one owner.</p>''',
+<p>New construction, never occupied. Sold as one building to one owner.</p>{OWN_HTML}''',
  G281,"281",[("exterior","Exterior"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Garage and basement")],"281",
  [("Main level","281-main-level.jpg"),("Upper level","281-upper-level.jpg"),("Basement","281-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
@@ -235,9 +243,11 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
 building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The Colonial at the Gate","assets/img/37/LSD01943twilight_2000.jpg","Twilight sky digitally enhanced.",
  "A gray colonial on the largest of the duplex lots, the first building you reach from Route 3, and the one designed around ease of movement.",
  [("4 + 4","Bedrooms"),("2 + 2","Full baths"),("2","Attached garages"),("1.12","Acres"),("151 ft","Frontage")],
- f'''<p class="lede">A mountain home that works for everyone who visits. In both residences, a ramp with handrails leads from the garage to the kitchen door, and the main level has a bedroom beside a full bath with a large roll-in shower, two shower heads and a wall-mounted sink.</p>
-<p>The living room runs more than 20 feet, with an oak staircase at its center. The white shaker-style kitchen has stainless appliances and tile floors. Upstairs are three more bedrooms and a full bath with a tub; the smallest bedroom makes a natural office. Out back, each home has a stamped concrete patio and a lawn edged in young pine and birch.</p>
-<p>New construction, never occupied. Sold as one building to one owner. The front entries have steps; the step-free route into each home is through its garage.</p>''',
+ f'''<p class="lede">A mountain home designed for everyone who lives in it or visits. Both residences were planned around ease of movement, with a step-free route from the garage to the main level and the rooms a person needs most on that level.</p>
+<h3>Accessibility, built in</h3>
+<p>From the garage, a ramp with handrails rises to the kitchen door, so there is no threshold to climb between the car and the main living level. In the kitchen, the sink is set at a lowered height so it can be used from a seated position, with stainless appliances within easy reach. Beside the first-floor bedroom, the full bath has an oversized roll-in shower with two shower heads, a wall-mounted sink with open space beneath it, and room to turn. Lever handles are used on doors throughout, and easy-care plank flooring runs through the living spaces.</p>
+<p>The living room runs more than 20 feet, with an oak staircase at its center. The white shaker-style kitchen has tile floors and generous counter space. Upstairs are three more bedrooms and a full bath with a tub; the smallest bedroom makes a natural office. Out back, each home has a stamped concrete patio and a lawn edged in young pine and birch.</p>
+<p>New construction, never occupied. Sold as one building to one owner. The front entries have steps; the step-free route into each home is through its garage.</p>{OWN_HTML}''',
  G37,"37",[("exterior","Exterior"),("access","Accessible features"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Basement")],"37",
  [("Main level","37-main-level.jpg"),("Upper level","37-upper-level.jpg"),("Basement","37-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
@@ -246,7 +256,7 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
   ("Lot","1.12 acres (48,787 sq ft), level, surveyed, 151 ft of frontage","MLS sheet"),
   ("Residences","Two, side by side. Each 4 bedrooms and 2 full baths","Floor plan"),
   ("Living area","Approx. 1,400 sq ft per residence, 2,803 sq ft total, as measured by 3D scan "+tbd("assessor or builder figure"),"CubiCasa scan"),
-  ("Accessible features","In both residences: garage ramp with handrails to the kitchen entry, first-floor bedroom, main-level bath with roll-in shower, two shower heads and wall-mounted sink, lever door handles "+tbd("design standard, clear door and hall widths"),"Photos; floor plan"),
+  ("Accessible features","In both residences: garage ramp with handrails to the kitchen entry, lowered kitchen sink, first-floor bedroom, main-level bath with curbless roll-in shower, two shower heads and wall-mounted sink, lever door handles "+tbd("design standard, clear door and hall widths"),"Photos; floor plan; seller"),
   ("Garage","Attached garage for each residence, about 20 by 23 ft, with opener","CubiCasa scan; photos"),
   ("Basement","Full, unfinished, insulated ceiling, bulkhead access","MLS sheet; photos"),
   ("Built","2023. New construction, never occupied","MLS sheet"),
@@ -267,6 +277,7 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
 write("residences/295-solar-spring-circle.html",page("residences/295-solar-spring-circle.html","295 Solar Spring Circle","The third duplex at Twin Peaks Village.",
  f'''<section><div class="wrap narrow"><p class="kicker">295 Solar Spring Circle &middot; Map 206, Lot 58.5</p><h2>The third duplex</h2><div class="hair"></div>
 <p class="lede">The third completed duplex stands between 281 and 37 Solar Spring Circle. It shares the dormered design of 281.</p>
+<p>{OWN_P}</p>
 {tbdblock("Photography, floor plans, film and specifications to come","Needs a shoot date and the same scan package as the other two buildings. Pricing and release timing to be confirmed.",pub="Photography, floor plans, film and pricing for 295 will be published when the residence is released. Ask the listing agents for an early look.")}
 <div style="height:28px"></div>{spec([("Septic","8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2023090625 dated September 6, 2023","Horizons Engineering septic plan, Lot 6"),("Lot","43,942 sq ft","Horizons Engineering site plan"),("Bedrooms, baths, square footage",tbd("from scan and assessor"),""),("Price",tbd("public price and release date"),"")])}</div></section>
 <section class="band-paper tight"><div class="wrap">{gallery([g for g in GSITE if g[0] in ("DJI_0647","DJI_0618")],"site",[],"../")}</div></section>{cta("../")}''',hero("assets/img/site/DJI_0636_2000.jpg","295 Solar Spring Circle &middot; Coming soon","The third duplex","Between 281 and 37 Solar Spring Circle, with the mountains on the horizon.",credit="Rear aerial of 295 Solar Spring Circle, with 281 beyond",short=True,pre="../"),pre="../"))
