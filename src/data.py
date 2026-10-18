@@ -103,6 +103,11 @@ G37 = [
  ("LSD02182","Basement","utility",""),
 ]
 GSITE = [
+ ("DJI_0407","Phase One in foliage, October 10, 2026: 37 Solar Spring Circle and the model home lot, with the Presidential Range beyond","site",""),
+ ("DJI_0408","Solar Spring Circle from above, October 10, 2026","site",""),
+ ("DJI_0409","Route 3 at the entrance, the model home at the gate, October 10, 2026","site",""),
+ ("DJI_0410","The village and the valley in foliage, October 10, 2026","site",""),
+ ("DJI_0411","Looking south over the village, October 10, 2026","site",""),
  ("DJI_0619","The village from above Route 3, looking toward the mountains","site",""),
  ("DJI_0623","Looking across Route 3","site",""),
  ("DJI_0624","Solar Spring Circle and the first three residences","site",""),
@@ -115,4 +120,15 @@ GSITE = [
  ("DJI_0636","Rear of 295 Solar Spring Circle with 281 beyond, mountains on the horizon","site",""),
  ("DJI_0647","281 and 295 Solar Spring Circle","site",""),
  ("DJI_0646","281 Solar Spring Circle aerial","site",""),
+]
+
+# The Hunter model home, photographed October 10, 2026, after the home was set on September 16
+GMODEL = [
+ ("DJI_0419","The Hunter from the front, roof on and house wrapped, October 10, 2026","model",""),
+ ("DJI_0420","The Hunter at the entrance to the village, Route 3 beyond","model",""),
+ ("DJI_0417","Garage and front elevation","model",""),
+ ("DJI_0418","Garage and front elevation","model",""),
+ ("DJI_0412","The model home lot from above Route 3, mountains beyond","model",""),
+ ("DJI_0416","The model home and Route 3, looking toward the Presidential Range","model",""),
+ ("DJI_0415","The model home from the west","model",""),
 ]

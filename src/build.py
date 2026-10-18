@@ -3,7 +3,7 @@
 Content facts trace to documents in /documents or to Keegan Rice's written confirmations.
 Anything wrapped in tbd() is a visible placeholder."""
 import os, html, shutil
-from data import G281, G37, GSITE
+from data import G281, G37, GSITE, GMODEL
 import siteplan
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); DIST=os.path.join(ROOT,"dist")
 e=html.escape
@@ -79,7 +79,7 @@ CARDS="".join([
  card("residences/281-solar-spring-circle.html","assets/img/281/LSD01734twilight_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage","$950,000"),
  card("residences/37-solar-spring-circle.html","assets/img/37/LSD01943twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind","$950,000"),
  card("residences/295-solar-spring-circle.html","assets/img/site/DJI_0636_900.jpg","Coming soon","295 Solar Spring Circle","The third duplex","Details, photography and floor plans to follow","Pricing to be announced"),
- card("hunter.html","assets/img/model/hunter-rendering_900.jpg","Model home under construction","1 Solar Spring Circle","The Hunter","Single-level &middot; 3 bedrooms, 2 baths, two-car garage &middot; artist's rendering","Pricing to be announced",gold=True),
+ card("hunter.html","assets/img/model/DJI_0419_900.jpg","Model home under construction","1 Solar Spring Circle","The Hunter","Single-level &middot; 3 bedrooms, 2 baths, two-car garage &middot; set, roof on, wrapped","Pricing to be announced",gold=True),
 ])
 
 PAGES=[]
@@ -87,16 +87,20 @@ def write(fn,s):
     PAGES.append(fn); p=os.path.join(DIST,fn); os.makedirs(os.path.dirname(p),exist_ok=True); open(p,"w").write(s)
 
 # ---------------- HOME
+def flythrough(pre=""): return f'''<section class="band-forest"><div class="wrap"><p class="kicker">From the air</p><h2>Fly through the village</h2><div class="hair"></div>
+<div class="split top"><div><p class="lede">Filmed at peak foliage on October 10, 2026: the model home at the gate on Route 3, the three completed duplex residences along Solar Spring Circle, and the Presidential Range on the horizon.</p><p>Aerial views are from a drone above the property and do not represent the view from any home.</p></div>
+<div><video controls preload="none" poster="{pre}assets/video/village-flythrough-poster.jpg"><source src="{pre}assets/video/village-flythrough-1080p.mp4" type="video/mp4"></video></div></div></div></section>'''
 home_body=f'''
 <section><div class="wrap split">
 <div><p class="kicker">Welcome</p><h2>Twenty-seven homesites at the center of the White Mountains</h2><div class="hair"></div>
 <p class="lede">Twin Peaks Village is a new planned community on Solar Spring Circle, just off Route 3 in Twin Mountain. Single-family homes and duplex residences sit on level lots of about an acre, served by public water and underground utilities, with private roads cared for by a homeowners' association.</p>
-<p>The first three duplex buildings are complete and have never been occupied. The model home, The Hunter, was set on its foundation on September 16, 2026 and will be finished this fall.</p>
+<p>The first three duplex buildings are complete and have never been occupied. The model home, The Hunter, was set on its foundation on September 16, 2026; by October 10 the roof was on and the house wrapped, with siding and fit-up to follow this fall.</p>
 <div class="btns"><a class="btn dark" href="village.html">About the village</a><a class="btn dark" href="village.html#site-plan">Interactive site plan</a></div></div>
 <div><img src="assets/img/site/DJI_0619_2000.jpg" alt="Aerial view of Twin Peaks Village from above Route 3 with mountains beyond" loading="lazy"></div>
 </div>
 <div class="wrap"><div class="facts"><div><b>27</b><span>Homesites planned</span></div><div><b>$115,000</b><span>Single-family homesites</span></div><div><b>3</b><span>Duplex buildings</span></div><div><b>5</b><span>Single-family sites, Phase One</span></div><div><b>1+ acre</b><span>Phase One lot sizes</span></div></div></div>
 </section>
+{flythrough()}
 <section class="band-paper"><div class="wrap"><p class="kicker">Residences</p><h2>Available now, and what comes next</h2><div class="hair"></div><div class="cards">{CARDS}</div></div></section>
 <section class="band-forest"><div class="wrap split top">
 <div><p class="kicker">Why here</p><h2>A basecamp for every season</h2><div class="hair"></div>
@@ -111,6 +115,7 @@ home_body=f'''
 <div class="tl">
 <div><b>Complete</b>Three duplex buildings finished, with gravel roads and utilities in place to serve them.</div>
 <div><b>September 16, 2026</b>The Hunter model home set on its foundation at 1 Solar Spring Circle.</div>
+<div><b>October 10, 2026</b>The Hunter closed in: roof on and house wrapped. The village filmed from the air at peak foliage.</div>
 <div><b>September 16, 2026</b>Phase One registered with the New Hampshire Attorney General&rsquo;s Consumer Protection and Antitrust Bureau, NHDOJ No. 2026184379, and recorded at the Coos County Registry of Deeds.</div>
 <div class="open"><b>Fall 2026</b>Paving of the road, driveways and walkways by the seller, and final landscaping.</div>
 <div class="open"><b>Fall 2026</b>Model home construction and final fit-up.</div>
@@ -121,8 +126,8 @@ home_body=f'''
 </div></section>
 {cta()}'''
 write("index.html",page("index.html","A new village in the White Mountains","Twin Peaks Village: single-family homes and duplex residences in Twin Mountain, New Hampshire.",home_body,
- hero("assets/img/37/DJI_0626twilight_2000.jpg","Twin Mountain &middot; New Hampshire","A new village in the White Mountains","Single-family homes and duplex residences on acre lots, minutes from the slopes, the trails and the river. Two new duplex residences are available now.",
- credit="37 Solar Spring Circle",btns='<div class="btns"><a class="btn fill" href="residences.html">View residences</a><a class="btn" href="contact.html">Request a showing</a></div>')))
+ hero("assets/img/site/DJI_0407_2000.jpg","Twin Mountain &middot; New Hampshire","A new village in the White Mountains","Single-family homes and duplex residences on acre lots, minutes from the slopes, the trails and the river. Two new duplex residences are available now.",
+ credit="Phase One at peak foliage, October 10, 2026",btns='<div class="btns"><a class="btn fill" href="residences.html">View residences</a><a class="btn" href="contact.html">Request a showing</a></div>')))
 
 # ---------------- VILLAGE
 village_body=f'''
@@ -142,10 +147,11 @@ village_body=f'''
  ("Wastewater","Private septic on each lot, State-approved designs","NHDES approvals on file"),
  ("Utilities","Underground electric. Cable, phone and high-speed internet available","MLS sheets"),
 ])}</div></div></section>
+{flythrough()}
 <section class="band-paper"><div class="wrap"><p class="kicker">Site plan</p><h2 id="site-plan">Phase One, lot by lot</h2><div class="hair"></div>
 {siteplan.block()}
 <div style="height:28px"></div>{gallery(GSITE,"site",[])}
-<p class="note" style="margin-top:14px">Aerial photography August 31, 2026.</p></div></section>
+<p class="note" style="margin-top:14px">Aerial photography August 31 and October 10, 2026.</p></div></section>
 <section><div class="wrap split top">
 <div><p class="kicker">The association</p><h2>Shared standards, shared care</h2><div class="hair"></div>
 <p>The Twin Peaks Village Homeowners&rsquo; Association maintains the private roads, the drainage system and the common lawns, plows in winter and sets aside a capital reserve, all for $40 a month per lot on the 2026 budget.</p>
@@ -294,9 +300,12 @@ hunter_body=f'''
 <section><div class="wrap split top"><div><p class="kicker">1 Solar Spring Circle &middot; Model home</p><h2>Everything on one level</h2><div class="hair"></div>
 <p class="lede">The Hunter is a single-level home by Westchester Modular Homes, and the model for the single-family homesites at Twin Peaks Village.</p>
 <p>A covered porch with tapered columns leads into an open living room, dining room and kitchen with a pantry. The primary suite sits at one end of the house, with two more bedrooms and a second full bath at the other. A sliding door opens from the dining room to the back, and the two-car garage is attached.</p>
-<p>The home was set on its foundation on September 16, 2026. Construction and final fit-up continue through the fall.</p></div>
+<p>The home was set on its foundation on September 16, 2026. By October 10 the roof was on and the house wrapped; siding, the covered porch and interior fit-up continue through the fall.</p></div>
 <div><div class="facts" style="margin-top:0"><div><b>3</b><span>Bedrooms</span></div><div><b>2</b><span>Full baths</span></div><div><b>1,630</b><span>Approx. sq ft, from plans</span></div><div><b>2-car</b><span>Attached garage</span></div></div>
 {HUNTER_SPEC}</div></div></section>
+<section class="band-paper tight"><div class="wrap"><p class="kicker">On site</p><h2>Set, and taking shape</h2><div class="hair"></div>{gallery(GMODEL,"model",[])}
+<p class="note" style="margin-top:14px">Photographed October 10, 2026. Aerial views are from a drone above the property and do not represent the view from any home.</p>
+<div class="split top" style="margin-top:36px"><div><h3>How it will finish</h3><p>The rendering below shows The Hunter as designed: siding with shake-style gables, stone accents and a covered porch with tapered columns. Landscaping, driveway and background are illustrative, and the finished home may differ.</p></div><div><img src="assets/img/model/hunter-rendering_1536.jpg" alt="Artist's rendering of The Hunter as it will look when finished" loading="lazy"></div></div></div></section>
 {PROGRESS}
 <section><div class="wrap split top"><div><p class="kicker">Build with us</p><h2>Your home, on your lot</h2><div class="hair"></div>
 <p>Five single-family homesites are part of Phase One, with eighteen more lots planned for Phase Two. Future homes are built under the developer's construction manager, who works with each buyer from plan selection through final fit-up.</p>
@@ -304,7 +313,7 @@ hunter_body=f'''
 <div class="people"><div class="person"><b>Charles Allen</b><span>Construction manager, Construction Management &amp; Estimating<br>PO Box 71, Madison, NH 03849</span><a href="tel:+16033878917">603-387-8917</a><a href="mailto:constructionmanager6426@aol.com">constructionmanager6426@aol.com</a></div></div></div></section>
 {cta()}'''
 write("hunter.html",page("hunter.html","The Hunter model home","The Hunter, a single-level model home at Twin Peaks Village.",hunter_body,
- hero("assets/img/model/hunter-rendering_1536.jpg","The model home","The Hunter","Three bedrooms, two baths and a two-car garage on one level. Set September 16, 2026 and finishing this fall.",credit="Artist's rendering. Landscaping, driveway and background are illustrative.")))
+ hero("assets/img/model/DJI_0419_2000.jpg","The model home","The Hunter","Three bedrooms, two baths and a two-car garage on one level. Set September 16, 2026 and finishing this fall.",credit="Photographed October 10, 2026, roof on and house wrapped. Siding, porch and finishes to follow.")))
 
 # ---------------- LOCATION
 def place(n,d,mi,mins,src="est"):
@@ -373,7 +382,7 @@ legal_body=f'''<section><div class="wrap narrow"><p class="kicker">Legal</p><h2>
 {tbdblock("This page is a draft for Attorney Andy Sullivan","Every paragraph below is proposed wording and should be replaced or approved by counsel before the site is public.")}
 <h3 style="margin-top:36px">Land sales registration</h3><p>Twin Peaks Village, Phase 1 (Carroll tax map 206, lots 58 and 58.1 through 58.8) is registered with the New Hampshire Department of Justice, Consumer Protection and Antitrust Bureau, under RSA 356-A, NHDOJ No. 2026184379, certificate issued September 16, 2026 and recorded at the Coos County Registry of Deeds, Book 1714, Page 293. Issuance of the certificate does not mean any public agency recommends the subdivision. New Hampshire law gives a purchaser an unqualified right to cancel a purchase and sale agreement within five days, as set out in the agreement. {tbd("counsel to confirm this wording satisfies RSA 356-A advertising requirements")}</p>
 <h3>Accuracy</h3><p>Information on this site comes from the seller, public records, engineering plans, the manufacturer's drawings and on-site scans, as noted on each page. It is believed accurate but is not guaranteed, and it may change without notice. Square footage and dimensions are approximate. Buyers should verify anything material to their decision.</p>
-<h3>Images</h3><p>Photographs were taken at the property on August 31 and September 1, 2026. Images labeled "virtually staged" contain digital furnishings that are not included in the sale. Twilight images have a digitally enhanced sky. The image of The Hunter is an artist's rendering; landscaping, paving and background scenery are illustrative and the finished home may differ. Aerial views are from a drone above the property and do not represent the view from any home.</p>
+<h3>Images</h3><p>Photographs were taken at the property on August 31, September 1 and October 10, 2026. Images labeled "virtually staged" contain digital furnishings that are not included in the sale. Twilight images have a digitally enhanced sky. The image of The Hunter is an artist's rendering; landscaping, paving and background scenery are illustrative and the finished home may differ. Aerial views are from a drone above the property and do not represent the view from any home.</p>
 <h3>Association and use</h3><p>All homes are subject to the declaration, bylaws, rules and budget of the Twin Peaks Village Homeowners&rsquo; Association. The declaration, bylaws, rules and budget are on the Documents page; the declaration will be recorded at the Coos County Registry of Deeds before the first lot is conveyed. Municipal zoning and ordinances of the Town of Carroll apply. Nothing on this site is a representation about rental income, appreciation or investment return.</p>
 <h3>Brokerage</h3><p>Twin Peaks Village is exclusively listed by Badger Peabody &amp; Smith Realty. The listing agents represent the seller, and the firm serves as escrow agent under the purchase and sale agreement. Badger Peabody &amp; Smith Realty, 383 Main Street, PO Box 789, Franconia, NH 03580, 603-823-5700.</p>
 <h3>Fair housing</h3><p>We are pledged to the letter and spirit of the Fair Housing Act and the New Hampshire Law Against Discrimination. Homes at Twin Peaks Village are offered without regard to race, color, religion, sex, disability, familial status, national origin, age, marital status, sexual orientation or gender identity.</p>
