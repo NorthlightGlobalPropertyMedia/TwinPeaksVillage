@@ -76,8 +76,8 @@ def card(href,img,status,addr,name,meta,price,gold=False,empty=False):
     return f'<a class="card" href="{href}">{ph}<div class="tx"><span class="addr">{addr}</span><h3>{name}</h3><span class="meta">{meta}</span><span class="price">{price}</span></div></a>'
 
 CARDS="".join([
- card("residences/281-solar-spring-circle.html","assets/img/281/LSD01734twilight_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage","$950,000"),
- card("residences/37-solar-spring-circle.html","assets/img/37/LSD01943twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind","$950,000"),
+ card("residences/281-solar-spring-circle.html","assets/img/281/LSD01734twilight_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage &middot; live in one, rent the other","$950,000"),
+ card("residences/37-solar-spring-circle.html","assets/img/37/LSD01943twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind &middot; live in one, rent the other","$950,000"),
  card("residences/295-solar-spring-circle.html","assets/img/site/DJI_0636_900.jpg","Coming soon","295 Solar Spring Circle","The third duplex","Details, photography and floor plans to follow","Pricing to be announced"),
  card("hunter.html","assets/img/model/DJI_0419_900.jpg","Model home under construction","1 Solar Spring Circle","The Hunter","Single-level &middot; 3 bedrooms, 2 baths, two-car garage &middot; set, roof on, wrapped","Pricing to be announced",gold=True),
 ])
@@ -181,10 +181,12 @@ write("village.html",page("village.html","The Village","The plan, the associatio
 
 
 # How a duplex can be owned. Per Keegan Rice; condominium conversion is subject to local approval.
-OWN_H = "One building, several ways to own it"
-OWN_P = ("Each duplex is purchased as a single building on one lot. Live in one side and rent the other for income. "
-         "Convert the building to a condominium and sell one half, subject to local approval. "
-         "Or keep both sides and have an exceptional amount of room for family and friends, everyone under one roof and each behind their own front door.")
+OWN_H = "Live in one, rent the other"
+OWN_P = ("Each duplex is sold whole: one building on one lot, to one owner, with two complete homes side by side. "
+         "Live in one and rent the other to help offset the cost of ownership. "
+         "The association places no restrictions on renting, long-term or short-term; Town of Carroll requirements apply. "
+         "Each residence has its own entrance, garage, basement, meters and heating, so the household next door lives independently. "
+         "The building can also be kept whole for family and friends, or converted to a condominium and one half sold, subject to local approval.")
 OWN_HTML = f'<h3>{OWN_H}</h3><p>{OWN_P}</p>'
 
 # ---------------- RESIDENCES INDEX
@@ -255,9 +257,8 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
 <h3>Accessibility, built in</h3>
 <p>The main level was planned for ease of movement: a first-floor bedroom sits beside a full bath with an oversized roll-in shower with dual shower heads and a wall-mounted sink, a ramp with handrails leads from the garage to the kitchen entry, and lever handles are used throughout. Designed to accommodate wheelchair access.</p>
 <p>Upstairs, three more bedrooms share a full bath with a tub and long vanity. The full basements have insulated ceilings and bulkhead access. Out back, each side has its own patio and lawn bordered by young pines and birch. Public water, underground utilities and high-speed internet are in place.</p>
-<h3>Ways to own it</h3>
-<p>Live in one, rent the other, or condo it to sell (subject to local approval). Live in one home and keep the other for family and friends, or own the whole building as a White Mountains base. The homeowners&rsquo; association maintains the roads and stormwater system.</p>
-<p>Bretton Woods, Cannon Mountain, Crawford Notch, the Presidential Range, golf, the Ammonoosuc River and the snowmobile trail network are all close at hand. Floor plans and walk-through video available.</p>''',
+{OWN_HTML}
+<p>The homeowners&rsquo; association maintains the roads and stormwater system. Bretton Woods, Cannon Mountain, Crawford Notch, the Presidential Range, golf, the Ammonoosuc River and the snowmobile trail network are all close at hand. Floor plans and walk-through video available.</p>''',
  G37,"37",[("exterior","Exterior"),("access","Accessible features"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Basement")],"37",
  [("Main level","37-main-level.jpg"),("Upper level","37-upper-level.jpg"),("Basement","37-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
