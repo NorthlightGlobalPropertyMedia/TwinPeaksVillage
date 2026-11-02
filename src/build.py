@@ -113,11 +113,12 @@ home_body=f'''
 <section><div class="wrap split rev">
 <div><p class="kicker">Progress</p><h2>Where things stand</h2><div class="hair"></div>
 <div class="tl">
-<div><b>Complete</b>Three duplex buildings finished, with gravel roads and utilities in place to serve them.</div>
+<div><b>Complete</b>Three duplex buildings finished, with utilities in place to serve them.</div>
+<div><b>Fall 2026</b>Paving complete: the village road, driveways and walkways are paved.</div>
 <div><b>September 16, 2026</b>The Hunter model home set on its foundation at 1 Solar Spring Circle.</div>
 <div><b>October 10, 2026</b>The Hunter closed in: roof on and house wrapped. The village filmed from the air at peak foliage.</div>
 <div><b>September 16, 2026</b>Phase One registered with the New Hampshire Attorney General&rsquo;s Consumer Protection and Antitrust Bureau, NHDOJ No. 2026184379, and recorded at the Coos County Registry of Deeds.</div>
-<div class="open"><b>Fall 2026</b>Paving of the road, driveways and walkways by the seller, and final landscaping.</div>
+<div class="open"><b>Fall 2026</b>Final landscaping.</div>
 <div class="open"><b>Fall 2026</b>Model home construction and final fit-up.</div>
 <div><b>September 2026</b>Association budget and rules adopted; rules take effect October 1, 2026.</div>
 <div><b>September 23, 2026</b>Declaration, covenants and bylaws in final form, to be recorded at the Registry before the first closing.</div>
@@ -240,7 +241,7 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
   ("Finishes","Granite counters, wood cabinetry with crown molding, tile in kitchens and baths, plank flooring, oak stair treads, recessed lighting","Photos"),
   ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups on the second floor","Photos"),
   ("Outdoors","Covered entry porches. Stamped concrete patio for each residence, about 24 by 9 ft","CubiCasa scan; aerial photos"),
-  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9"),
+  ("Road and drive","Private paved association road. Driveway and walkways paved, fall 2026. Road and stormwater system maintained by the homeowners&rsquo; association","Seller; association documents"),
   ("Taxes","$6,727 (2025)","MLS sheet"),
   ("Association dues","$40 per month per lot, 2026 budget","Association budget"),
   ("Warranty","Seller&rsquo;s one-year limited warranty on workmanship and materials, five years on structure. Manufacturer warranties on appliances and equipment pass to the buyer","Limited warranty; purchase and sale agreement, section 14")],
@@ -249,11 +250,14 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
 building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The Colonial at the Gate","assets/img/37/LSD01943twilight_2000.jpg","Twilight sky digitally enhanced.",
  "A gray colonial on the largest of the duplex lots, the first building you reach from Route 3, and the one designed around ease of movement.",
  [("4 + 4","Bedrooms"),("2 + 2","Full baths"),("2","Attached garages"),("1.12","Acres"),("151 ft","Frontage")],
- f'''<p class="lede">A mountain home designed for everyone who lives in it or visits. Both residences were planned around ease of movement, with a step-free route from the garage to the main level and the rooms a person needs most on that level.</p>
+ f'''<p class="lede">Twin Peaks Village, a new planned community in Twin Mountain, introduces 37 Solar Spring Circle: a never-occupied, new-construction Colonial-style duplex designed with accessibility in mind.</p>
+<p>Set on a level, surveyed 1.12-acre lot near the entrance to the community, the building holds two side-by-side residences behind soft gray siding and gabled entry porches, each with 4 bedrooms, including one on the first floor, 2 bathrooms, an attached garage, a full basement and a private stamped concrete patio. Each home opens to a living room more than 20 feet long with an oak staircase at its center. The dining area connects to a bright white kitchen with shaker-style cabinetry, stainless appliances, tile flooring and generous counter space.</p>
 <h3>Accessibility, built in</h3>
-<p>From the garage, a ramp with handrails rises to the kitchen door, so there is no threshold to climb between the car and the main living level. In the kitchen, the sink is set at a lowered height so it can be used from a seated position, with stainless appliances within easy reach. Beside the first-floor bedroom, the full bath has an oversized roll-in shower with two shower heads, a wall-mounted sink with open space beneath it, and room to turn. Lever handles are used on doors throughout, and easy-care plank flooring runs through the living spaces.</p>
-<p>The living room runs more than 20 feet, with an oak staircase at its center. The white shaker-style kitchen has tile floors and generous counter space. Upstairs are three more bedrooms and a full bath with a tub; the smallest bedroom makes a natural office. Out back, each home has a stamped concrete patio and a lawn edged in young pine and birch.</p>
-<p>New construction, never occupied. Sold as one building to one owner. The front entries have steps; the step-free route into each home is through its garage.</p>{OWN_HTML}''',
+<p>The main level was planned for ease of movement: a first-floor bedroom sits beside a full bath with an oversized roll-in shower with dual shower heads and a wall-mounted sink, a ramp with handrails leads from the garage to the kitchen entry, and lever handles are used throughout. Designed to accommodate wheelchair access.</p>
+<p>Upstairs, three more bedrooms share a full bath with a tub and long vanity. The full basements have insulated ceilings and bulkhead access. Out back, each side has its own patio and lawn bordered by young pines and birch. Public water, underground utilities and high-speed internet are in place.</p>
+<h3>Ways to own it</h3>
+<p>Live in one, rent the other, or condo it to sell (subject to local approval). Live in one home and keep the other for family and friends, or own the whole building as a White Mountains base. The homeowners&rsquo; association maintains the roads and stormwater system.</p>
+<p>Bretton Woods, Cannon Mountain, Crawford Notch, the Presidential Range, golf, the Ammonoosuc River and the snowmobile trail network are all close at hand. Floor plans and walk-through video available.</p>''',
  G37,"37",[("exterior","Exterior"),("access","Accessible features"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Basement")],"37",
  [("Main level","37-main-level.jpg"),("Upper level","37-upper-level.jpg"),("Basement","37-basement.jpg")],
  [("Price","$950,000","Listing agreement; MLS"),
@@ -273,7 +277,7 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
   ("Finishes","Formica kitchen counters, granite bath vanity tops, white shaker-style cabinetry, tile in kitchens, plank flooring, oak staircase","Photos"),
   ("Appliances","Stainless refrigerator, electric range and dishwasher in each kitchen. Laundry hookups "+tbd("laundry location"),"Photos"),
   ("Outdoors","Gabled entry porches. Stamped concrete patio for each residence, about 20 by 8 ft","CubiCasa scan; photos"),
-  ("Road and drive","Private association road. Paving of the road, driveways and walkways by the seller, fall of 2026","Listing agreement, section 9"),
+  ("Road and drive","Private paved association road. Driveway and walkways paved, fall 2026. Road and stormwater system maintained by the homeowners&rsquo; association","Seller; association documents"),
   ("Taxes",tbd("current assessment is land only"),"MLS sheet"),
   ("Association dues","$40 per month per lot, 2026 budget","Association budget"),
   ("Warranty","Seller&rsquo;s one-year limited warranty on workmanship and materials, five years on structure. Manufacturer warranties on appliances and equipment pass to the buyer","Limited warranty; purchase and sale agreement, section 14")],
