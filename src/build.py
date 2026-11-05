@@ -146,7 +146,7 @@ village_body=f'''
  ("Stormwater","Maintained by the homeowners' association","Association budget, drainage maintenance line"),
  ("Water","Public water","MLS sheets; site plan"),
  ("Wastewater","Private septic on each lot, State-approved designs","NHDES approvals on file"),
- ("Utilities","Underground electric. Cable, phone and high-speed internet available","MLS sheets"),
+ ("Utilities","Underground electric. Cable and phone service available","MLS sheets"),
 ])}</div></div></section>
 {flythrough()}
 <section class="band-paper"><div class="wrap"><p class="kicker">Site plan</p><h2 id="site-plan">Phase One, lot by lot</h2><div class="hair"></div>
@@ -251,12 +251,12 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
 
 building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The Colonial at the Gate","assets/img/37/LSD01943twilight_2000.jpg","Twilight sky digitally enhanced.",
  "A gray colonial on the largest of the duplex lots, the first building you reach from Route 3, and the one designed around ease of movement.",
- [("4 + 4","Bedrooms"),("2 + 2","Full baths"),("2","Attached garages"),("1.12","Acres"),("151 ft","Frontage")],
+ [("4 + 4","Bedrooms"),("2 + 2","Full baths"),("2","Attached garages"),("1.12","Acres")],
  f'''<p class="lede">Twin Peaks Village, a new planned community in Twin Mountain, introduces 37 Solar Spring Circle: a never-occupied, new-construction Colonial-style duplex designed with accessibility in mind.</p>
 <p>Set on a level, surveyed 1.12-acre lot near the entrance to the community, the building holds two side-by-side residences behind soft gray siding and gabled entry porches, each with 4 bedrooms, including one on the first floor, 2 bathrooms, an attached garage, a full basement and a private stamped concrete patio. Each home opens to a living room more than 20 feet long with an oak staircase at its center. The dining area connects to a bright white kitchen with shaker-style cabinetry, stainless appliances, tile flooring and generous counter space.</p>
 <h3>Accessibility, built in</h3>
 <p>The main level was planned for ease of movement: a first-floor bedroom sits beside a full bath with an oversized roll-in shower with dual shower heads and a wall-mounted sink, a ramp with handrails leads from the garage to the kitchen entry, and lever handles are used throughout. Designed to accommodate wheelchair access.</p>
-<p>Upstairs, three more bedrooms share a full bath with a tub and long vanity. The full basements have insulated ceilings and bulkhead access. Out back, each side has its own patio and lawn bordered by young pines and birch. Public water, underground utilities and high-speed internet are in place.</p>
+<p>Upstairs, three more bedrooms share a full bath with a tub and long vanity. The full basements have insulated ceilings and bulkhead access. Out back, each side has its own patio and lawn bordered by young pines and birch. Public water and underground utilities are in place.</p>
 {OWN_HTML}
 <p>The homeowners&rsquo; association maintains the roads and stormwater system. Bretton Woods, Cannon Mountain, Crawford Notch, the Presidential Range, golf, the Ammonoosuc River and the snowmobile trail network are all close at hand. Floor plans and walk-through video available.</p>''',
  G37,"37",[("exterior","Exterior"),("access","Accessible features"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Basement")],"37",
@@ -264,7 +264,7 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
  [("Price","$950,000","Listing agreement; MLS"),
   ("Address","37 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card"),
   ("Tax map","Map 206, Lot 58.6","Listing agreement; septic plan"),
-  ("Lot","1.12 acres (48,787 sq ft), level, surveyed, 151 ft of frontage","MLS sheet"),
+  ("Lot","1.12 acres (48,787 sq ft), level, surveyed","MLS sheet"),
   ("Residences","Two, side by side. Each 4 bedrooms and 2 full baths","Floor plan"),
   ("Living area","Approx. 1,400 sq ft per residence, 2,803 sq ft total, as measured by 3D scan "+tbd("assessor or builder figure"),"CubiCasa scan"),
   ("Accessible features","In both residences: garage ramp with handrails to the kitchen entry, lowered kitchen sink, first-floor bedroom, main-level bath with curbless roll-in shower, two shower heads and wall-mounted sink, lever door handles "+tbd("design standard, clear door and hall widths"),"Photos; floor plan; seller"),
