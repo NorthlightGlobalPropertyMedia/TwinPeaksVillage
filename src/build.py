@@ -20,7 +20,7 @@ def page(fn,title,desc,body,hero=None,pre=""):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} | Twin Peaks Village</title><meta name="description" content="{e(desc)}">
 {'<meta name="robots" content="noindex,nofollow">' if (not LIVE or fn=="thanks.html") else f'<link rel="canonical" href="{SITE}{"" if fn=="index.html" else fn}">'}
-<meta property="og:site_name" content="Twin Peaks Village"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website"><meta property="og:url" content="{SITE}{"" if fn=="index.html" else fn}"><meta property="og:image" content="{SITE}assets/img/37/DJI_0626twilight_2000.jpg"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Twin Peaks Village"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="website"><meta property="og:url" content="{SITE}{"" if fn=="index.html" else fn}"><meta property="og:image" content="{SITE}assets/img/site/PVILLAGE_twilight_2000.jpg"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{pre}assets/brand/04_icon_mark_hires.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap">
@@ -76,9 +76,9 @@ def card(href,img,status,addr,name,meta,price,gold=False,empty=False):
     return f'<a class="card" href="{href}">{ph}<div class="tx"><span class="addr">{addr}</span><h3>{name}</h3><span class="meta">{meta}</span><span class="price">{price}</span></div></a>'
 
 CARDS="".join([
- card("residences/281-solar-spring-circle.html","assets/img/281/LSD01734twilight_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage &middot; live in one, rent the other","$950,000"),
- card("residences/37-solar-spring-circle.html","assets/img/37/LSD01943twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind &middot; live in one, rent the other","$950,000"),
- card("residences/295-solar-spring-circle.html","assets/img/site/DJI_0636_900.jpg","Coming soon","295 Solar Spring Circle","The third duplex","Details, photography and floor plans to follow","Pricing to be announced"),
+ card("residences/281-solar-spring-circle.html","assets/img/281/DJI_0478_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage &middot; live in one, rent the other","$950,000"),
+ card("residences/37-solar-spring-circle.html","assets/img/37/P37_twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind &middot; live in one, rent the other","$950,000"),
+ card("residences/295-solar-spring-circle.html","assets/img/site/DJI_0484_900.jpg","Coming soon","295 Solar Spring Circle","The third duplex","Details, photography and floor plans to follow","Pricing to be announced"),
  card("hunter.html","assets/img/model/DJI_0419_900.jpg","Model home under construction","1 Solar Spring Circle","The Hunter","Single-level &middot; 3 bedrooms, 2 baths, two-car garage &middot; set, roof on, wrapped","Pricing to be announced",gold=True),
 ])
 
@@ -96,7 +96,7 @@ home_body=f'''
 <p class="lede">Twin Peaks Village is a new planned community on Solar Spring Circle, just off Route 3 in Twin Mountain. Single-family homes and duplex residences sit on level lots of about an acre, served by public water and underground utilities, with private roads cared for by a homeowners' association.</p>
 <p>The first three duplex buildings are complete and have never been occupied. The model home, The Hunter, was set on its foundation on September 16, 2026; by October 10 the roof was on and the house wrapped, with siding and fit-up to follow this fall.</p>
 <div class="btns"><a class="btn dark" href="village.html">About the village</a><a class="btn dark" href="village.html#site-plan">Interactive site plan</a></div></div>
-<div><img src="assets/img/site/DJI_0619_2000.jpg" alt="Aerial view of Twin Peaks Village from above Route 3 with mountains beyond" loading="lazy"></div>
+<div><img src="assets/img/site/DJI_0496_2000.jpg" alt="Aerial view of Twin Peaks Village and its paved road, with the Presidential Range beyond" loading="lazy"></div>
 </div>
 <div class="wrap"><div class="facts"><div><b>27</b><span>Homesites planned</span></div><div><b>$115,000</b><span>Single-family homesites</span></div><div><b>3</b><span>Duplex buildings</span></div><div><b>5</b><span>Single-family sites, Phase One</span></div><div><b>1+ acre</b><span>Phase One lot sizes</span></div></div></div>
 </section>
@@ -123,12 +123,12 @@ home_body=f'''
 <div><b>September 2026</b>Association budget and rules adopted; rules take effect October 1, 2026.</div>
 <div><b>September 23, 2026</b>Declaration, covenants and bylaws in final form, to be recorded at the Registry before the first closing.</div>
 </div></div>
-<div><img src="assets/img/site/DJI_0618_2000.jpg" alt="Aerial view of the three completed duplex buildings" loading="lazy"></div>
+<div><img src="assets/img/site/DJI_0497_2000.jpg" alt="Aerial view of the three completed duplex buildings and their paved drives" loading="lazy"></div>
 </div></section>
 {cta()}'''
 write("index.html",page("index.html","A new village in the White Mountains","Twin Peaks Village: single-family homes and duplex residences in Twin Mountain, New Hampshire.",home_body,
- hero("assets/img/site/DJI_0407_2000.jpg","Twin Mountain &middot; New Hampshire","A new village in the White Mountains","Single-family homes and duplex residences on acre lots, minutes from the slopes, the trails and the river. Two new duplex residences are available now.",
- credit="Phase One at peak foliage, October 10, 2026",btns='<div class="btns"><a class="btn fill" href="residences.html">View residences</a><a class="btn" href="contact.html">Request a showing</a></div>')))
+ hero("assets/img/site/PVILLAGE_twilight_2000.jpg","Twin Mountain &middot; New Hampshire","A new village in the White Mountains","Single-family homes and duplex residences on acre lots, minutes from the slopes, the trails and the river. Two new duplex residences are available now.",
+ credit="Phase One at dusk after paving, fall 2026. Twilight sky digitally enhanced.",btns='<div class="btns"><a class="btn fill" href="residences.html">View residences</a><a class="btn" href="contact.html">Request a showing</a></div>')))
 
 # ---------------- VILLAGE
 village_body=f'''
@@ -177,7 +177,7 @@ village_body=f'''
 </div></div></section>
 {cta()}'''
 write("village.html",page("village.html","The Village","The plan, the association and the team behind Twin Peaks Village.",village_body,
- hero("assets/img/site/DJI_0624_2000.jpg","The Village","Planned with care, built to last","Private roads, public water, underground utilities and a homeowners' association to look after all of it.",short=True)))
+ hero("assets/img/site/DJI_0494_2000.jpg","The Village","Planned with care, built to last","Private roads, public water, underground utilities and a homeowners' association to look after all of it.",short=True)))
 
 
 # How a duplex can be owned. Per Keegan Rice; condominium conversion is subject to local approval.
@@ -192,7 +192,7 @@ OWN_HTML = f'<h3>{OWN_H}</h3><p>{OWN_P}</p>'
 # ---------------- RESIDENCES INDEX
 write("residences.html",page("residences.html","Residences","Duplex residences and single-family homes at Twin Peaks Village.",
  f'<section><div class="wrap"><p class="kicker">Phase One</p><h2>Residences</h2><div class="hair"></div><p class="lede">Each duplex is sold as one building to one owner: two complete homes side by side, each with its own entrance, garage, basement, meters and heating system.</p><p>{OWN_P}</p><div style="height:20px"></div><div class="cards">{CARDS}</div></div></section>{cta()}',
- hero("assets/img/site/DJI_0618_2000.jpg","Residences","Two homes under one roof","Live in one and keep the other for the people you want close, or hold the whole building as your White Mountains base.",short=True)))
+ hero("assets/img/281/DJI_0476_2000.jpg","Residences","Two homes under one roof","Live in one and keep the other for the people you want close, or hold the whole building as your White Mountains base.",short=True)))
 
 # ---------------- BUILDING PAGES
 def building(fn,addr,name,heroimg,herocredit,lead,facts,intro_html,items,folder,cats,video,plans,specrows,docs):
@@ -202,7 +202,7 @@ def building(fn,addr,name,heroimg,herocredit,lead,facts,intro_html,items,folder,
 <div><div class="facts" style="margin-top:0">{"".join(f"<div><b>{a}</b><span>{b}</span></div>" for a,b in facts)}</div>
 <div class="btns"><a class="btn fill" style="color:var(--forest-deep)" href="{pre}contact.html">Request a showing</a><a class="btn dark" href="#plans">Floor plans</a></div></div></div></div></section>
 <section class="band-paper tight"><div class="wrap"><p class="kicker">Gallery</p><h2>Photographs</h2><div class="hair"></div>{gallery(items,folder,cats,pre)}
-<p class="note" style="margin-top:14px">Photographed September 1, 2026. Images marked "virtually staged" show digital furnishings in the actual room; the unfurnished photo of the same room appears beside it. Twilight images have a digitally enhanced sky.</p></div></section>
+<p class="note" style="margin-top:14px">Aerials photographed after paving, fall 2026; interiors and ground-level exteriors September 1, 2026. Images marked "virtually staged" show digital furnishings in the actual room; the unfurnished photo of the same room appears beside it. Twilight images have a digitally enhanced sky.</p></div></section>
 <section><div class="wrap split top"><div><p class="kicker">Walk through</p><h2>Film</h2><div class="hair"></div><p>A continuous walk-through of both residences, recorded from the 3D scan of August 31, 2026.</p>{f'<p class="note">{tbd("edited 60 to 90 second film")}</p>' if not LIVE else ""}</div>
 <div><video controls preload="none" poster="{pre}assets/video/{video}-walkthrough-poster.jpg"><source src="{pre}assets/video/{video}-walkthrough-720p.mp4" type="video/mp4"></video></div></div></section>
 <section class="band-paper" id="plans"><div class="wrap"><p class="kicker">Floor plans</p><h2>Level by level</h2><div class="hair"></div>
@@ -220,7 +220,7 @@ def doc(title,desc,href=None):
     return f'<div class="doc"><div><b>{title}</b><span>{desc}</span></div>{f"<a href={href}>Download PDF</a>" if href else "<em class=soon>Coming</em>"}</div>'
 
 COMMON_SRC="MLS sheet"
-building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","The Dormer House","assets/img/281/LSD01734twilight_2000.jpg","Twilight sky digitally enhanced.",
+building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","The Dormer House","assets/img/281/DJI_0480_2000.jpg","Photographed after paving, fall 2026.",
  "Two complete four-bedroom homes beneath one dormered roofline, each with a two-car garage, set among mature spruce and birch.",
  [("4 + 4","Bedrooms"),("3 + 3","Full baths"),("3,584","Sq ft finished"),("4","Garage bays"),("1.00","Acre")],
  f'''<p class="lede">Two real houses, not two apartments. Each side has a first-floor bedroom and full bath, a 20-foot primary suite with a walk-in closet and private bath, a second-floor laundry room, and its own meters and heating zones.</p>
@@ -249,7 +249,7 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
   ("Warranty","Seller&rsquo;s one-year limited warranty on workmanship and materials, five years on structure. Manufacturer warranties on appliances and equipment pass to the buyer","Limited warranty; purchase and sale agreement, section 14")],
  doc("Floor plans with dimensions","All three levels, CubiCasa, PDF","../docs/281-solar-spring-circle-floor-plans.pdf")+doc("State-approved septic plan","Horizons Engineering, Lot 5, NHDES eCA2021112215","../docs/281-solar-spring-circle-septic-plan.pdf")+doc("Property brochure","Eight pages, in production")+doc("Seller's property disclosure","Duplex, September 25, 2026","../docs/property-disclosure-duplex.pdf"))
 
-building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The Colonial at the Gate","assets/img/37/LSD01943twilight_2000.jpg","Twilight sky digitally enhanced.",
+building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The Colonial at the Gate","assets/img/37/P37_twilight_2000.jpg","After paving, fall 2026. Twilight sky digitally enhanced.",
  "A gray colonial on the largest of the duplex lots, the first building you reach from Route 3, and the one designed around ease of movement.",
  [("4 + 4","Bedrooms"),("2 + 2","Full baths"),("2","Attached garages"),("1.12","Acres")],
  f'''<p class="lede">Twin Peaks Village, a new planned community in Twin Mountain, introduces 37 Solar Spring Circle: a never-occupied, new-construction Colonial-style duplex designed with accessibility in mind.</p>
@@ -291,7 +291,7 @@ write("residences/295-solar-spring-circle.html",page("residences/295-solar-sprin
 <p>{OWN_P}</p>
 {tbdblock("Photography, floor plans, film and specifications to come","Needs a shoot date and the same scan package as the other two buildings. Pricing and release timing to be confirmed.",pub="Photography, floor plans, film and pricing for 295 will be published when the residence is released. Ask the listing agents for an early look.")}
 <div style="height:28px"></div>{spec([("Septic","8-bedroom Enviro-Septic design, 2,500-gallon tank, NHDES approval eCA2023090625 dated September 6, 2023","Horizons Engineering septic plan, Lot 6"),("Lot","43,942 sq ft","Horizons Engineering site plan"),("Bedrooms, baths, square footage",tbd("from scan and assessor"),""),("Price",tbd("public price and release date"),"")])}</div></section>
-<section class="band-paper tight"><div class="wrap">{gallery([g for g in GSITE if g[0] in ("DJI_0647","DJI_0618")],"site",[],"../")}</div></section>{cta("../")}''',hero("assets/img/site/DJI_0636_2000.jpg","295 Solar Spring Circle &middot; Coming soon","The third duplex","Between 281 and 37 Solar Spring Circle, with the mountains on the horizon.",credit="Rear aerial of 295 Solar Spring Circle, with 281 beyond",short=True,pre="../"),pre="../"))
+<section class="band-paper tight"><div class="wrap">{gallery([g for g in GSITE if g[0] in ("DJI_0484","DJI_0483")],"site",[],"../")}</div></section>{cta("../")}''',hero("assets/img/site/DJI_0484_2000.jpg","295 Solar Spring Circle &middot; Coming soon","The third duplex","Between 281 and 37 Solar Spring Circle, with the mountains on the horizon.",credit="295 Solar Spring Circle after paving, fall 2026",short=True,pre="../"),pre="../"))
 
 PROGRESS="" if LIVE else '<section class="band-paper"><div class="wrap"><p class="kicker">Progress</p><h2>Watch it rise</h2><div class="hair"></div>'+tbdblock("Set day and construction photographs","Photos or video from September 16 and weekly progress through fit-up.")+'</div></section>'
 # ---------------- HUNTER
@@ -328,7 +328,7 @@ location_body=f'''
 <p class="lede">Twin Peaks Village is on Solar Spring Circle in Carroll, New Hampshire 03595. From the intersection of US Route 3 and US Route 302 in Twin Mountain, head south on Route 3. Solar Spring Circle is about three tenths of a mile on the left.</p>
 <p class="note">Directions from the Horizons Engineering plans on file.</p>
 {tbdblock("Location map","Branded map showing the village, Routes 3 and 302, and the destinations below.")}</div>
-<div><img src="assets/img/site/DJI_0623_2000.jpg" alt="Aerial view across Route 3 and the valley from above Twin Peaks Village" loading="lazy"></div></div></section>
+<div><img src="assets/img/site/DJI_0498_2000.jpg" alt="Aerial view of Twin Peaks Village with the mountains beyond" loading="lazy"></div></div></section>
 <section class="band-paper"><div class="wrap"><p class="kicker">Nearby</p><h2>What is close at hand</h2><div class="hair"></div>
 <div class="scroll"><table class="spec drive"><thead><tr><th scope="col">Destination</th><th scope="col">What is there</th><th scope="col" class="num">Miles</th><th scope="col" class="num">Drive</th></tr></thead><tbody>
 {place("Ammonoosuc River","Fishing and paddling, right in the village","1","3 min")}
@@ -349,11 +349,11 @@ location_body=f'''
 <div><figure style="margin:0;background:#fff;border:1px solid var(--rule);padding:10px"><img src="assets/img/site/snowmobile-trail-map.jpg" alt="Map of snowmobile corridor trails around Twin Peaks Village in Twin Mountain" loading="lazy" style="aspect-ratio:auto"></figure>
 <p class="note" style="margin-top:10px">Corridor trails shown in magenta. For reference only.</p></div></div></section>
 <section><div class="wrap"><p class="kicker">On the horizon</p><h2>The Presidential Range from above the village</h2><div class="hair"></div>
-{gallery([g for g in GSITE if g[0] in ("DJI_0626","DJI_0619","DJI_0636","DJI_0623")],"site",[])}
+{gallery([g for g in GSITE if g[0] in ("DJI_0500","DJI_0498","DJI_0499","DJI_0495")],"site",[])}
 <p class="note" style="margin-top:14px">Aerial photographs taken by drone above the property. Views from ground level and from individual homes vary. {tbd("foliage and winter photography")}</p></div></section>
 {cta()}'''
 write("location.html",page("location.html","Location","Twin Mountain, New Hampshire: between Franconia Notch and Crawford Notch.",location_body,
- hero("assets/img/site/DJI_0626_2000.jpg","Location","Between two notches","Twin Mountain sits where Routes 3 and 302 meet, with Bretton Woods, Cannon Mountain and the Presidential Range all around.",short=True)))
+ hero("assets/img/site/DJI_0500_2000.jpg","Location","Between two notches","Twin Mountain sits where Routes 3 and 302 meet, with Bretton Woods, Cannon Mountain and the Presidential Range all around.",short=True)))
 
 # ---------------- DOCUMENTS
 documents_body=f'''<section><div class="wrap narrow"><p class="kicker">Offering package</p><h2>Documents</h2><div class="hair"></div>
