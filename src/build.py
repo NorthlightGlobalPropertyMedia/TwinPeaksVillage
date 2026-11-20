@@ -76,8 +76,8 @@ def card(href,img,status,addr,name,meta,price,gold=False,empty=False):
     return f'<a class="card" href="{href}">{ph}<div class="tx"><span class="addr">{addr}</span><h3>{name}</h3><span class="meta">{meta}</span><span class="price">{price}</span></div></a>'
 
 CARDS="".join([
- card("residences/281-solar-spring-circle.html","assets/img/281/DJI_0478_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage &middot; live in one, rent the other","$950,000"),
- card("residences/37-solar-spring-circle.html","assets/img/37/P37_twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind &middot; live in one, rent the other","$950,000"),
+ card("residences/281-solar-spring-circle.html","assets/img/281/DJI_0478_900.jpg","Available","281 Solar Spring Circle","The Dormer House","Duplex &middot; two residences, each 4 bedrooms, 3 baths, two-car garage &middot; live in one, rent the other","$895,000"),
+ card("residences/37-solar-spring-circle.html","assets/img/37/P37_twilight_900.jpg","Available","37 Solar Spring Circle","The Colonial at the Gate","Duplex &middot; two residences, each 4 bedrooms, 2 baths, designed with accessibility in mind &middot; live in one, rent the other &middot; Unit A for rent, $3,250/mo","$895,000"),
  card("residences/295-solar-spring-circle.html","assets/img/site/DJI_0484_900.jpg","Coming soon","295 Solar Spring Circle","The third duplex","Details, photography and floor plans to follow","Pricing to be announced"),
  card("hunter.html","assets/img/model/DJI_0419_900.jpg","Model home under construction","1 Solar Spring Circle","The Hunter","Single-level &middot; 3 bedrooms, 2 baths, two-car garage &middot; set, roof on, wrapped","Pricing to be announced",gold=True),
 ])
@@ -214,7 +214,7 @@ def building(fn,addr,name,heroimg,herocredit,lead,facts,intro_html,items,folder,
 <section><div class="wrap"><p class="kicker">Details</p><h2>Facts and specifications</h2><div class="hair"></div>{spec(specrows)}</div></section>
 <section class="band-paper tight"><div class="wrap"><p class="kicker">Downloads</p><h2>Documents for this residence</h2><div class="hair"></div><div class="doclist">{docs}</div></div></section>
 {cta(pre)}'''
-    write(fn,page(fn,f"{addr}",f"{addr}, Twin Peaks Village, Twin Mountain NH.",body,hero(heroimg,addr+" &middot; $950,000",name,lead,credit=herocredit,short=False,pre=pre),pre=pre))
+    write(fn,page(fn,f"{addr}",f"{addr}, Twin Peaks Village, Twin Mountain NH.",body,hero(heroimg,addr+" &middot; $895,000",name,lead,credit=herocredit,short=False,pre=pre),pre=pre))
 
 def doc(title,desc,href=None):
     return f'<div class="doc"><div><b>{title}</b><span>{desc}</span></div>{f"<a href={href}>Download PDF</a>" if href else "<em class=soon>Coming</em>"}</div>'
@@ -228,7 +228,7 @@ building("residences/281-solar-spring-circle.html","281 Solar Spring Circle","Th
 <p>New construction, never occupied. Sold as one building to one owner.</p>{OWN_HTML}''',
  G281,"281",[("exterior","Exterior"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Garage and basement")],"281",
  [("Main level","281-main-level.jpg"),("Upper level","281-upper-level.jpg"),("Basement","281-basement.jpg")],
- [("Price","$950,000","Listing agreement; MLS"),
+ [("Price","$895,000","Listing agreement; MLS"),
   ("Address","281 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card"),
   ("Tax map","Map 206, Lot 58.4","Listing agreement; septic plan"),
   ("Lot","1.00 acre, level, surveyed, 125 ft of frontage","MLS sheet"),
@@ -257,11 +257,14 @@ building("residences/37-solar-spring-circle.html","37 Solar Spring Circle","The 
 <h3>Accessibility, built in</h3>
 <p>The main level was planned for ease of movement: a first-floor bedroom sits beside a full bath with an oversized roll-in shower with dual shower heads and a wall-mounted sink, a ramp with handrails leads from the garage to the kitchen entry, and lever handles are used throughout. Designed to accommodate wheelchair access.</p>
 <p>Upstairs, three more bedrooms share a full bath with a tub and long vanity. The full basements have insulated ceilings and bulkhead access. Out back, each side has its own patio and lawn bordered by young pines and birch. Public water and underground utilities are in place.</p>
+<h3>Unit A available to rent</h3>
+<p>Unit A at 37 Solar Spring Circle is also offered for seasonal or long-term rental at $3,250 per month plus utilities: four bedrooms, two baths, the accessible main level and an attached garage, minutes from Bretton Woods. Contact the listing agents for terms and availability.</p>
 {OWN_HTML}
 <p>The homeowners&rsquo; association maintains the roads and stormwater system. Bretton Woods, Cannon Mountain, Crawford Notch, the Presidential Range, golf, the Ammonoosuc River and the snowmobile trail network are all close at hand. Floor plans and walk-through video available.</p>''',
  G37,"37",[("exterior","Exterior"),("access","Accessible features"),("living","Living and dining"),("kitchen","Kitchen"),("beds","Bedrooms and baths"),("utility","Basement")],"37",
  [("Main level","37-main-level.jpg"),("Upper level","37-upper-level.jpg"),("Basement","37-basement.jpg")],
- [("Price","$950,000","Listing agreement; MLS"),
+ [("Price","$895,000","Listing agreement; MLS"),
+  ("Rental, Unit A","Available for seasonal or long-term rental at $3,250 per month plus utilities","Listing agents"),
   ("Address","37 Solar Spring Circle, Carroll (Twin Mountain), NH 03595","Tax card"),
   ("Tax map","Map 206, Lot 58.6","Listing agreement; septic plan"),
   ("Lot","1.12 acres (48,787 sq ft), level, surveyed","MLS sheet"),
